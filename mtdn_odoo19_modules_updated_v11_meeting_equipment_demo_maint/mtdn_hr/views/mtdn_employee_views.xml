@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Employee Kanban View -->
+    <record id="view_mtdn_employee_kanban" model="ir.ui.view">
+        <field name="name">mtdn.employee.kanban</field>
+        <field name="model">mtdn.employee</field>
+        <field name="arch" type="xml">
+            <!-- Default columns by status for easier management -->
+            <kanban class="o_kanban_small_column" default_group_by="department_id">
+                <field name="code"/>
+                <field name="name"/>
+                <field name="department_id"/>
+                <field name="job_id"/>
+                <field name="manager_id"/>
+                <field name="state"/>
+                <field name="active"/>
+                <templates>
+                    <t t-name="card">
+                        <div t-attf-class="o_kanban_record mtdn_kanban_card mtdn_state_{{ record.state.raw_value }}">
+                            <div class="mtdn_kanban_title">
+                                <div>
+                                    <span class="text-muted" t-esc="record.code.value"/>
+                                    <div class="fw-bold"><field name="name"/></div>
+                                </div>
+                                <div>
+                                    <field name="state" widget="badge"/>
+                                </div>
+                            </div>
+                            <div class="mt8"><span class="mtdn_kanban_label">Phòng ban:</span> <field name="department_id"/></div>
+                            <div class="mt4"><span class="mtdn_kanban_label">Chức danh:</span> <field name="job_id"/></div>
+                            <div class="mt4"><span class="mtdn_kanban_label">Quản lý:</span> <field name="manager_id"/></div>
+                            <div class="mt8">
+                                <t t-if="record.active.raw_value"><span class="badge text-bg-success">Đang hoạt động</span></t>
+                                <t t-else=""><span class="badge text-bg-secondary">Tạm ẩn</span></t>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <!-- Employee List View -->
+    <record id="view_mtdn_employee_list" model="ir.ui.view">
+        <field name="name">mtdn.employee.list</field>
+        <field name="model">mtdn.employee</field>
+        <field name="arch" type="xml">
+            <list string="Nhân viên">
+                <field name="code"/>
+                <field name="name"/>
+                <field name="department_id"/>
+                <field name="job_id"/>
+                <field name="manager_id"/>
+                <field name="start_date"/>
+                <field name="state" widget="badge"
+                       decoration-warning="state == 'probation'"
+                       decoration-success="state == 'working'"
+                       decoration-info="state == 'on_leave'"
+                       decoration-danger="state == 'resigned'"/>
+                <field name="active"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Employee Form View -->
+    <record id="view_mtdn_employee_form" model="ir.ui.view">
+        <field name="name">mtdn.employee.form</field>
+        <field name="model">mtdn.employee</field>
+        <field name="arch" type="xml">
+            <form string="Nhân viên">
+                <header>
+                    <field name="state" widget="statusbar" statusbar_visible="probation,working,on_leave,resigned"/>
+                    <button name="action_set_probation" type="object" string="Thử việc" class="btn-secondary"/>
+                    <button name="action_set_working" type="object" string="Đang làm" class="btn-primary"/>
+                    <button name="action_set_on_leave" type="object" string="Tạm nghỉ" class="btn-secondary"/>
+                    <button name="action_resign" type="object" string="Nghỉ việc (Archive)" class="btn-danger"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" placeholder="Họ và tên"/>
+                        </h1>
+                        <div class="text-muted">
+                            <span>Mã: </span>
+                            <field name="code" readonly="1" class="oe_inline"/>
+                        </div>
+                    </div>
+
+                    <group>
+                        <group string="Thông tin công việc">
+                            <field name="department_id"/>
+                            <field name="job_id" domain="[('department_id','=',department_id)]"/>
+                            <field name="manager_id"/>
+                            <field name="start_date"/>
+                            <field name="leave_date"/>
+                        </group>
+                        <group string="Tài khoản &amp; Trạng thái">
+                            <field name="active"/>
+                        </group>
+                    </group>
+
+                    <notebook>
+                        <page string="Liên hệ">
+                            <group>
+                                <field name="email"/>
+                                <field name="phone"/>
+                            </group>
+                        </page>
+                        <page string="Cá nhân">
+                            <group>
+                                <field name="gender"/>
+                                <field name="birthday"/>
+                            </group>
+                        </page>
+                        <page string="Ghi chú">
+                            <field name="note" placeholder="Ghi chú thêm..."/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Employee Search View -->
+    <record id="view_mtdn_employee_search" model="ir.ui.view">
+        <field name="name">mtdn.employee.search</field>
+        <field name="model">mtdn.employee</field>
+        <field name="arch" type="xml">
+            <search string="Tìm nhân viên">
+                <field name="name"/>
+                <field name="code"/>
+                <field name="email"/>
+                <field name="phone"/>
+
+                <filter name="filter_probation" string="Thử việc" domain="[('state','=','probation')]"/>
+                <filter name="filter_working" string="Đang làm" domain="[('state','=','working')]"/>
+                <filter name="filter_on_leave" string="Tạm nghỉ" domain="[('state','=','on_leave')]"/>
+                <filter name="filter_resigned" string="Nghỉ việc" domain="[('state','=','resigned')]"/>
+                <filter name="filter_active" string="Đang hoạt động" domain="[('active','=',True)]"/>
+
+                <filter name="group_by_department" string="Nhóm theo phòng ban" context="{'group_by':'department_id'}"/>
+                <filter name="group_by_job" string="Nhóm theo chức danh" context="{'group_by':'job_id'}"/>
+                <filter name="group_by_state" string="Nhóm theo trạng thái" context="{'group_by':'state'}"/>
+            </search>
+        </field>
+    </record>
+</odoo>

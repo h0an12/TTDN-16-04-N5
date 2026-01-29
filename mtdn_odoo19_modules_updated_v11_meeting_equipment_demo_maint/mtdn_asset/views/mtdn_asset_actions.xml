@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="action_mtdn_asset" model="ir.actions.act_window">
+        <field name="name">Tài sản</field>
+        <field name="res_model">mtdn.asset</field>
+        <field name="view_mode">kanban,list,form</field>
+        <field name="search_view_id" ref="view_mtdn_asset_search"/>
+        <field name="context">{'active_test': False}</field>
+    </record>
+
+    <record id="action_mtdn_asset_category" model="ir.actions.act_window">
+        <field name="name">Loại tài sản</field>
+        <field name="res_model">mtdn.asset.category</field>
+        <field name="view_mode">kanban,list,form</field>
+        <field name="search_view_id" ref="view_mtdn_asset_category_search"/>
+    </record>
+
+    <record id="action_mtdn_asset_equipment_type" model="ir.actions.act_window">
+        <field name="name">Loại thiết bị</field>
+        <field name="res_model">mtdn.asset.equipment.type</field>
+        <field name="view_mode">kanban,list,form</field>
+        <field name="search_view_id" ref="view_mtdn_asset_equipment_type_search"/>
+    </record>
+
+    <record id="action_mtdn_branch" model="ir.actions.act_window">
+        <field name="name">Chi nhánh</field>
+        <field name="res_model">mtdn.branch</field>
+        <field name="view_mode">kanban,list,form</field>
+        <field name="search_view_id" ref="view_mtdn_branch_search"/>
+    </record>
+
+    <record id="action_mtdn_asset_meeting_equipment" model="ir.actions.act_window">
+        <field name="name">Thiết bị phòng họp</field>
+        <field name="res_model">mtdn.asset</field>
+        <field name="view_mode">kanban,list,form</field>
+        <field name="search_view_id" ref="view_mtdn_asset_search"/>
+        <!-- NOTE (Odoo 17+ / 19): action domains/contexts are evaluated on the client.
+             ref('xmlid') is not available there, so we filter by category code instead.
+        -->
+        <field name="domain">[("category_id.code", "=", "MEET_EQ")]</field>
+        <!-- Default kanban columns by Equipment Type -->
+        <field name="context">{"default_category_code": "MEET_EQ", "group_by": "equipment_type_id"}</field>
+    </record>
+</odoo>

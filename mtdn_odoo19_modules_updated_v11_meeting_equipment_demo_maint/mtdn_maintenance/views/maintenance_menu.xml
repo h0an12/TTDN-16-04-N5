@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <menuitem id="menu_mtdn_maintenance_root" name="Bảo trì" parent="mtdn_hr.menu_mtdn_root" sequence="40"/>
+
+    <menuitem id="menu_mtdn_maintenance_requests" name="Phiếu bảo trì" parent="menu_mtdn_maintenance_root"
+              action="action_mtdn_maintenance_request" sequence="1"/>
+
+    <menuitem id="menu_mtdn_maintenance_config" name="Danh mục" parent="menu_mtdn_maintenance_root" sequence="20"/>
+
+    <menuitem id="menu_mtdn_maintenance_categories" name="Loại sự cố" parent="menu_mtdn_maintenance_config"
+              action="action_mtdn_maintenance_category" sequence="21"/>
+
+    <menuitem id="menu_mtdn_maintenance_teams" name="Đội xử lý" parent="menu_mtdn_maintenance_config"
+              action="action_mtdn_maintenance_team" sequence="22"/>
+</odoo>

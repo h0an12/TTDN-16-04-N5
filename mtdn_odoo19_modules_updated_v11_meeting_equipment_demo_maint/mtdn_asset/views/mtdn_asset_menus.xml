@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <menuitem id="menu_mtdn_asset_root" name="Tài sản" parent="mtdn_hr.menu_mtdn_root" sequence="20"/>
+
+    <menuitem
+        id="menu_mtdn_asset_assets"
+        name="Tài sản"
+        parent="menu_mtdn_asset_root"
+        action="action_mtdn_asset"
+        sequence="10"
+    />
+
+    <menuitem
+        id="menu_mtdn_asset_meeting_equipment"
+        name="Thiết bị phòng họp"
+        parent="menu_mtdn_asset_root"
+        action="action_mtdn_asset_meeting_equipment"
+        sequence="15"
+    />
+
+    <menuitem id="menu_mtdn_asset_config" name="Danh mục" parent="menu_mtdn_asset_root" sequence="99"/>
+
+    <menuitem
+        id="menu_mtdn_asset_categories"
+        name="Loại tài sản"
+        parent="menu_mtdn_asset_config"
+        action="action_mtdn_asset_category"
+        sequence="10"
+    />
+
+    <menuitem
+        id="menu_mtdn_asset_equipment_types"
+        name="Loại thiết bị"
+        parent="menu_mtdn_asset_config"
+        action="action_mtdn_asset_equipment_type"
+        sequence="20"
+    />
+
+    <menuitem
+        id="menu_mtdn_asset_branches"
+        name="Chi nhánh"
+        parent="menu_mtdn_asset_config"
+        action="action_mtdn_branch"
+        sequence="30"
+    />
+</odoo>

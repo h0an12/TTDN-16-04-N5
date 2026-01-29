@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Seed: Meeting equipment types + category + a set of equipment assets.
+
+         Note: This is loaded in data (not demo), so users always have a usable dataset.
+    -->
+
+    <!-- Equipment Types -->
+    <record id="equipment_type_projector" model="mtdn.asset.equipment.type">
+        <field name="code">PRJ</field>
+        <field name="name">Máy chiếu</field>
+    </record>
+    <record id="equipment_type_tv" model="mtdn.asset.equipment.type">
+        <field name="code">TV</field>
+        <field name="name">TV / Màn hình</field>
+    </record>
+    <record id="equipment_type_microphone" model="mtdn.asset.equipment.type">
+        <field name="code">MIC</field>
+        <field name="name">Micro</field>
+    </record>
+    <record id="equipment_type_speaker" model="mtdn.asset.equipment.type">
+        <field name="code">SPK</field>
+        <field name="name">Loa</field>
+    </record>
+    <record id="equipment_type_camera" model="mtdn.asset.equipment.type">
+        <field name="code">CAM</field>
+        <field name="name">Camera</field>
+    </record>
+
+    <!-- Asset Category for Meeting Equipment -->
+    <record id="asset_category_meeting_equipment" model="mtdn.asset.category">
+        <field name="code">MEET_EQ</field>
+        <field name="name">Thiết bị phòng họp</field>
+        <field name="depreciation_method">linear</field>
+        <field name="depreciation_unit">month</field>
+        <field name="depreciation_years">36</field>
+    </record>
+
+    <!-- Projectors -->
+    <record id="asset_eq_projector_01" model="mtdn.asset">
+        <field name="code">EQ_PRJ_01</field>
+        <field name="name">Máy chiếu Epson EB-X41</field>
+        <field name="category_id" ref="mtdn_asset.asset_category_meeting_equipment"/>
+        <field name="equipment_type_id" ref="mtdn_asset.equipment_type_projector"/>
+        <field name="purchase_date">2026-01-05</field>
+        <field name="in_service_date">2026-01-06</field>
+        <field name="value">18000</field>
+        <field name="quantity">1</field>
+        <field name="state">available</field>
+    </record>
+    <record id="asset_eq_projector_02" model="mtdn.asset">
+        <field name="code">EQ_PRJ_02</field>
+        <field name="name">Máy chiếu BenQ MS550</field>
+        <field name="category_id" ref="mtdn_asset.asset_category_meeting_equipment"/>
+        <field name="equipment_type_id" ref="mtdn_asset.equipment_type_projector"/>
+        <field name="purchase_date">2026-01-10</field>
+        <field name="in_service_date">2026-01-11</field>
+        <field name="value">20000</field>
+        <field name="quantity">1</field>
+        <field name="state">available</field>
+    </record>
+    <record id="asset_eq_projector_03" model="mtdn.asset">
+        <field name="code">EQ_PRJ_03</field>
+        <field name="name">Máy chiếu ViewSonic PA503S</field>
+        <field name="category_id" ref="mtdn_asset.asset_category_meeting_equipment"/>
+        <field name="equipment_type_id" ref="mtdn_asset.equipment_type_projector"/>
+        <field name="purchase_date">2026-01-12</field>
+        <field name="in_service_date">2026-01-13</field>
+        <field name="value">17500</field>
+        <field name="quantity">1</field>
+        <field name="state">available</field>
+    </record>
+
+    <!-- TVs -->
+    <record id="asset_eq_tv_01" model="mtdn.asset">
+        <field name="code">EQ_TV_01</field>
+        <field name="name">TV Samsung 55" (Meeting)</field>
+        <field name="category_id" ref="mtdn_asset.asset_category_meeting_equipment"/>
+        <field name="equipment_type_id" ref="mtdn_asset.equipment_type_tv"/>
+        <field name="purchase_date">2026-01-07</field>
+        <field name="in_service_date">2026-01-08</field>
+        <field name="value">15000</field>
+        <field name="quantity">1</field>
+        <field name="state">available</field>
+    </record>
+    <record id="asset_eq_tv_02" model="mtdn.asset">
+        <field name="code">EQ_TV_02</field>
+        <field name="name">TV LG 65" (Meeting)</field>
+        <field name="category_id" ref="mtdn_asset.asset_category_meeting_equipment"/>
+        <field name="equipment_type_id" ref="mtdn_asset.equipment_type_tv"/>
+        <field name="purchase_date">2026-01-18</field>
+        <field name="in_service_date">2026-01-19</field>
+        <field name="value">19500</field>
+        <field name="quantity">1</field>
+        <field name="state">available</field>
+    </record>
+    <record id="asset_eq_tv_03" model="mtdn.asset">
+        <field name="code">EQ_TV_03</field>
+        <field name="name">Màn hình Dell 27" (Meeting)</field>
+        <field name="category_id" ref="mtdn_asset.asset_category_meeting_equipment"/>
+        <field name="equipment_type_id" ref="mtdn_asset.equipment_type_tv"/>
+        <field name="purchase_date">2026-01-20</field>
+        <field name="in_service_date">2026-01-21</field>
+        <field name="value">8200</field>
+        <field name="quantity">1</field>
+        <field name="state">available</field>
+    </record>
+
+    <!-- Microphones -->
+    <record id="asset_eq_mic_01" model="mtdn.asset">
+        <field name="code">EQ_MIC_01</field>
+        <field name="name">Micro không dây Shure BLX</field>
+        <field name="category_id" ref="mtdn_asset.asset_category_meeting_equipment"/>
+        <field name="equipment_type_id" ref="mtdn_asset.equipment_type_microphone"/>
+        <field name="purchase_date">2026-01-08</field>
+        <field name="in_service_date">2026-01-09</field>
+        <field name="value">6200</field>
+        <field name="quantity">2</field>
+        <field name="state">available</field>
+    </record>
+    <record id="asset_eq_mic_02" model="mtdn.asset">
+        <field name="code">EQ_MIC_02</field>
+        <field name="name">Micro hội nghị Jabra Speak</field>
+        <field name="category_id" ref="mtdn_asset.asset_category_meeting_equipment"/>
+        <field name="equipment_type_id" ref="mtdn_asset.equipment_type_microphone"/>
+        <field name="purchase_date">2026-01-16</field>
+        <field name="in_service_date">2026-01-17</field>
+        <field name="value">5400</field>
+        <field name="quantity">2</field>
+        <field name="state">available</field>
+    </record>
+
+    <!-- Speakers -->
+    <record id="asset_eq_speaker_01" model="mtdn.asset">
+        <field name="code">EQ_SPK_01</field>
+        <field name="name">Loa Harman Kardon (Meeting)</field>
+        <field name="category_id" ref="mtdn_asset.asset_category_meeting_equipment"/>
+        <field name="equipment_type_id" ref="mtdn_asset.equipment_type_speaker"/>
+        <field name="purchase_date">2026-01-11</field>
+        <field name="in_service_date">2026-01-12</field>
+        <field name="value">7600</field>
+        <field name="quantity">1</field>
+        <field name="state">available</field>
+    </record>
+    <record id="asset_eq_speaker_02" model="mtdn.asset">
+        <field name="code">EQ_SPK_02</field>
+        <field name="name">Loa JBL Bar (Meeting)</field>
+        <field name="category_id" ref="mtdn_asset.asset_category_meeting_equipment"/>
+        <field name="equipment_type_id" ref="mtdn_asset.equipment_type_speaker"/>
+        <field name="purchase_date">2026-01-14</field>
+        <field name="in_service_date">2026-01-15</field>
+        <field name="value">7900</field>
+        <field name="quantity">1</field>
+        <field name="state">available</field>
+    </record>
+    <record id="asset_eq_speaker_03" model="mtdn.asset">
+        <field name="code">EQ_SPK_03</field>
+        <field name="name">Loa Bose Companion</field>
+        <field name="category_id" ref="mtdn_asset.asset_category_meeting_equipment"/>
+        <field name="equipment_type_id" ref="mtdn_asset.equipment_type_speaker"/>
+        <field name="purchase_date">2026-01-22</field>
+        <field name="in_service_date">2026-01-23</field>
+        <field name="value">9900</field>
+        <field name="quantity">1</field>
+        <field name="state">available</field>
+    </record>
+
+    <!-- Cameras -->
+    <record id="asset_eq_camera_01" model="mtdn.asset">
+        <field name="code">EQ_CAM_01</field>
+        <field name="name">Camera hội nghị Logitech C930e</field>
+        <field name="category_id" ref="mtdn_asset.asset_category_meeting_equipment"/>
+        <field name="equipment_type_id" ref="mtdn_asset.equipment_type_camera"/>
+        <field name="purchase_date">2026-01-09</field>
+        <field name="in_service_date">2026-01-10</field>
+        <field name="value">8800</field>
+        <field name="quantity">1</field>
+        <field name="state">available</field>
+    </record>
+    <record id="asset_eq_camera_02" model="mtdn.asset">
+        <field name="code">EQ_CAM_02</field>
+        <field name="name">Camera hội nghị Poly Studio</field>
+        <field name="category_id" ref="mtdn_asset.asset_category_meeting_equipment"/>
+        <field name="equipment_type_id" ref="mtdn_asset.equipment_type_camera"/>
+        <field name="purchase_date">2026-01-25</field>
+        <field name="in_service_date">2026-01-26</field>
+        <field name="value">15500</field>
+        <field name="quantity">1</field>
+        <field name="state">available</field>
+    </record>
+</odoo>

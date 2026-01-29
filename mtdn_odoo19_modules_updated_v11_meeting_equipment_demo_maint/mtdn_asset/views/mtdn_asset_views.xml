@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Kanban (thẻ màu sắc) -->
+    <record id="view_mtdn_asset_kanban" model="ir.ui.view">
+        <field name="name">mtdn.asset.kanban</field>
+        <field name="model">mtdn.asset</field>
+        <field name="arch" type="xml">
+            <!-- Group by state by default to be easier to use (columns like a dashboard) -->
+            <kanban class="o_kanban_small_column" default_group_by="category_id">
+                <field name="code"/>
+                <field name="name"/>
+                <field name="state"/>
+                <field name="category_id"/>
+                <field name="equipment_type_id"/>
+                <field name="quantity"/>
+                <field name="branch_id"/>
+                <field name="employee_id"/>
+                <field name="book_value"/>
+                <templates>
+                    <t t-name="card">
+                        <div t-attf-class="o_kanban_record mtdn_kanban_card mtdn_state_{{ record.state.raw_value }}">
+                            <div class="mtdn_kanban_title">
+                                <div>
+                                    <span class="text-muted" t-esc="record.code.value"/>
+                                    <div class="fw-bold"><field name="name"/></div>
+                                </div>
+                                <div>
+                                    <field name="state" widget="badge"
+                                           decoration-success="state == 'available'"
+                                           decoration-warning="state == 'in_use'"
+                                           decoration-danger="state in ('maintenance','broken')"/>
+                                </div>
+                            </div>
+
+                            <div class="mtdn_kanban_meta_line mt8">
+                                <span class="mtdn_kanban_label">Loại:</span>
+                                <span><field name="category_id"/></span>
+                            </div>
+
+                            <div class="mtdn_kanban_meta_line mt4">
+                                <span class="mtdn_kanban_label">Thiết bị:</span>
+                                <span><field name="equipment_type_id"/></span>
+                            </div>
+
+                            <div class="mtdn_kanban_meta_line mt4">
+                                <span class="mtdn_kanban_label">Số lượng:</span>
+                                <span class="fw-bold"><field name="quantity"/></span>
+                            </div>
+
+                            <div class="mtdn_kanban_meta_line mt4">
+                                <span class="mtdn_kanban_label">Giá trị còn lại:</span>
+                                <span class="fw-bold"><field name="book_value"/></span>
+                            </div>
+
+                            <div class="mt8">
+                                <t t-if="record.employee_id.raw_value">
+                                    <span class="badge text-bg-info">Đang gán</span>
+                                    <span class="ms-1"><field name="employee_id"/></span>
+                                </t>
+                                <t t-elif="record.branch_id.raw_value">
+                                    <span class="badge text-bg-secondary">Chi nhánh</span>
+                                    <span class="ms-1"><field name="branch_id"/></span>
+                                </t>
+                                <t t-else="">
+                                    <span class="badge text-bg-light">Chưa gán</span>
+                                </t>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="view_mtdn_asset_meeting_equipment_kanban" model="ir.ui.view">
+        <field name="name">mtdn.asset.meeting.equipment.kanban</field>
+        <field name="model">mtdn.asset</field>
+        <field name="arch" type="xml">
+            <!-- Group by state by default to be easier to use (columns like a dashboard) -->
+            <kanban class="o_kanban_small_column" default_group_by="equipment_type_id">
+                <field name="code"/>
+                <field name="name"/>
+                <field name="state"/>
+                <field name="category_id"/>
+                <field name="equipment_type_id"/>
+                <field name="quantity"/>
+                <field name="branch_id"/>
+                <field name="employee_id"/>
+                <field name="book_value"/>
+                <templates>
+                    <t t-name="card">
+                        <div t-attf-class="o_kanban_record mtdn_kanban_card mtdn_state_{{ record.state.raw_value }}">
+                            <div class="mtdn_kanban_title">
+                                <div>
+                                    <span class="text-muted" t-esc="record.code.value"/>
+                                    <div class="fw-bold"><field name="name"/></div>
+                                </div>
+                                <div>
+                                    <field name="state" widget="badge"
+                                           decoration-success="state == 'available'"
+                                           decoration-warning="state == 'in_use'"
+                                           decoration-danger="state in ('maintenance','broken')"/>
+                                </div>
+                            </div>
+
+                            <div class="mtdn_kanban_meta_line mt8">
+                                <span class="mtdn_kanban_label">Loại:</span>
+                                <span><field name="category_id"/></span>
+                            </div>
+
+                            <div class="mtdn_kanban_meta_line mt4">
+                                <span class="mtdn_kanban_label">Thiết bị:</span>
+                                <span><field name="equipment_type_id"/></span>
+                            </div>
+
+                            <div class="mtdn_kanban_meta_line mt4">
+                                <span class="mtdn_kanban_label">Số lượng:</span>
+                                <span class="fw-bold"><field name="quantity"/></span>
+                            </div>
+
+                            <div class="mtdn_kanban_meta_line mt4">
+                                <span class="mtdn_kanban_label">Giá trị còn lại:</span>
+                                <span class="fw-bold"><field name="book_value"/></span>
+                            </div>
+
+                            <div class="mt8">
+                                <t t-if="record.employee_id.raw_value">
+                                    <span class="badge text-bg-info">Đang gán</span>
+                                    <span class="ms-1"><field name="employee_id"/></span>
+                                </t>
+                                <t t-elif="record.branch_id.raw_value">
+                                    <span class="badge text-bg-secondary">Chi nhánh</span>
+                                    <span class="ms-1"><field name="branch_id"/></span>
+                                </t>
+                                <t t-else="">
+                                    <span class="badge text-bg-light">Chưa gán</span>
+                                </t>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+
+    <record id="view_mtdn_asset_list" model="ir.ui.view">
+        <field name="name">mtdn.asset.list</field>
+        <field name="model">mtdn.asset</field>
+        <field name="arch" type="xml">
+            <list string="Tài sản">
+                <field name="code"/>
+                <field name="name"/>
+                <field name="category_id"/>
+                <field name="equipment_type_id"/>
+                <field name="quantity"/>
+                <field name="state" widget="badge"
+                       decoration-success="state == 'available'"
+                       decoration-warning="state == 'in_use'"
+                       decoration-danger="state in ('maintenance', 'broken')"/>
+                <field name="next_maintenance_date"/>
+                <field name="maintenance_overdue"/>
+                <field name="employee_id"/>
+                <field name="department_id"/>
+                <field name="branch_id"/>
+                <field name="partner_id"/>
+                <field name="value"/>
+                <field name="book_value"/>
+                <field name="active"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_mtdn_asset_form" model="ir.ui.view">
+        <field name="name">mtdn.asset.form</field>
+        <field name="model">mtdn.asset</field>
+        <field name="arch" type="xml">
+            <form string="Tài sản">
+                <sheet>
+                    <widget name="web_ribbon" title="BẢO TRÌ" bg_color="bg-danger" invisible="state != 'maintenance'"/>
+                    <widget name="web_ribbon" title="ĐANG DÙNG" bg_color="bg-warning" invisible="state != 'in_use'"/>
+                    <widget name="web_ribbon" title="HỎNG" bg_color="bg-dark" invisible="state != 'broken'"/>
+                    <div class="oe_title">
+                        <h1><field name="name" placeholder="VD: Laptop Dell"/></h1>
+                        <div class="text-muted">
+                            <span>Mã: </span>
+                            <field name="code" readonly="1" class="oe_inline"/>
+                        </div>
+                    </div>
+
+                    <group>
+                        <group string="Thông tin">
+                            <field name="category_id"/>
+                            <field name="equipment_type_id"/>
+                            <field name="quantity"/>
+                            <field name="state" widget="statusbar" options="{'clickable': True}"/>
+                            <field name="company_id"/>
+                            <field name="branch_id"/>
+                            <field name="partner_id"/>
+                            <field name="active"/>
+                        </group>
+                        <group string="Bảo trì">
+                            <field name="next_maintenance_date"/>
+                            <field name="maintenance_overdue" readonly="1"/>
+                        </group>
+                    </group>
+
+                    <notebook>
+                        <page string="Gán tài sản">
+                            <group>
+                                <group>
+                                    <field name="employee_id"/>
+                                    <field name="department_id"/>
+                                </group>
+                                <group>
+                                    <field name="note" nolabel="1" placeholder="Ghi chú..."/>
+                                </group>
+                            </group>
+                        </page>
+
+                        <page string="Giá trị &amp; Khấu hao">
+                            <group>
+                                <group string="Giá trị">
+                                    <field name="purchase_date"/>
+                                    <field name="in_service_date"/>
+                                    <field name="depreciation_start_date"/>
+                                    <field name="value"/>
+                                    <field name="currency_id" invisible="1"/>
+                                </group>
+                                <group string="Khấu hao">
+                                    <field name="depreciation_method"/>
+                                    <field name="depreciation_unit" invisible="depreciation_method == 'none'"/>
+                                    <field name="depreciation_years" invisible="depreciation_method == 'none'"/>
+                                    <field name="declining_factor" invisible="depreciation_method != 'declining'"/>
+
+                                    <separator string="Kết quả"/>
+                                    <field name="depreciation_per_year" readonly="1" invisible="depreciation_method == 'none'"/>
+                                    <field name="accumulated_depreciation" readonly="1" invisible="depreciation_method == 'none'"/>
+                                    <field name="book_value" readonly="1" invisible="depreciation_method == 'none'"/>
+                                </group>
+                            </group>
+                        </page>
+
+                        <page string="Tài liệu">
+                            <group>
+                                <field name="attachment_ids" widget="many2many_binary" string="Tải lên tài liệu"/>
+                            </group>
+                        </page>
+
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_mtdn_asset_search" model="ir.ui.view">
+        <field name="name">mtdn.asset.search</field>
+        <field name="model">mtdn.asset</field>
+        <field name="arch" type="xml">
+            <search string="Tìm tài sản">
+                <field name="name"/>
+                <field name="code"/>
+                <field name="category_id"/>
+                <field name="employee_id"/>
+                <field name="department_id"/>
+
+                <filter name="filter_available" string="Sẵn sàng" domain="[('state','=','available')]"/>
+                <filter name="filter_in_use" string="Đang sử dụng" domain="[('state','=','in_use')]"/>
+                <filter name="filter_maintenance" string="Bảo trì" domain="[('state','=','maintenance')]"/>
+                <filter name="filter_broken" string="Hỏng" domain="[('state','=','broken')]"/>
+                <filter name="filter_overdue" string="Quá hạn bảo trì" domain="[('maintenance_overdue','=',True)]"/>
+                <filter name="filter_active" string="Đang hoạt động" domain="[('active','=',True)]"/>
+
+                <filter name="group_by_category" string="Nhóm theo loại" context="{'group_by':'category_id'}"/>
+                <filter name="group_by_state" string="Nhóm theo trạng thái" context="{'group_by':'state'}"/>
+            </search>
+        </field>
+    </record>
+</odoo>

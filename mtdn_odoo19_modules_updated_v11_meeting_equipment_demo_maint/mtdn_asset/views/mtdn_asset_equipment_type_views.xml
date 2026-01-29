@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Kanban -->
+    <record id="view_mtdn_asset_equipment_type_kanban" model="ir.ui.view">
+        <field name="name">mtdn.asset.equipment.type.kanban</field>
+        <field name="model">mtdn.asset.equipment.type</field>
+        <field name="arch" type="xml">
+            <kanban class="o_kanban_small_column">
+                <field name="code"/>
+                <field name="name"/>
+                <field name="quantity_total"/>
+                <field name="active"/>
+                <templates>
+                    <t t-name="card">
+                        <div class="o_kanban_record mtdn_kanban_card mtdn_accent_teal">
+                            <div class="mtdn_kanban_title">
+                                <div>
+                                    <span class="text-muted" t-esc="record.code.value"/>
+                                    <div class="fw-bold"><field name="name"/></div>
+                                </div>
+                                <div>
+                                    <span class="badge text-bg-info">SL: <t t-esc="record.quantity_total.value"/></span>
+                                </div>
+                            </div>
+                            <div class="mt8">
+                                <t t-if="record.active.raw_value">
+                                    <span class="badge text-bg-success">Đang dùng</span>
+                                </t>
+                                <t t-else="">
+                                    <span class="badge text-bg-secondary">Tạm ẩn</span>
+                                </t>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="view_mtdn_asset_equipment_type_list" model="ir.ui.view">
+        <field name="name">mtdn.asset.equipment.type.list</field>
+        <field name="model">mtdn.asset.equipment.type</field>
+        <field name="arch" type="xml">
+            <list string="Loại thiết bị">
+                <field name="code"/>
+                <field name="name"/>
+                <field name="quantity_total"/>
+                <field name="active"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_mtdn_asset_equipment_type_form" model="ir.ui.view">
+        <field name="name">mtdn.asset.equipment.type.form</field>
+        <field name="model">mtdn.asset.equipment.type</field>
+        <field name="arch" type="xml">
+            <form string="Loại thiết bị">
+                <sheet>
+                    <group>
+                        <field name="code"/>
+                        <field name="name"/>
+                        <field name="quantity_total" readonly="1"/>
+                        <field name="active"/>
+                    </group>
+                    <group>
+                        <field name="description" placeholder="Mô tả (tùy chọn)"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_mtdn_asset_equipment_type_search" model="ir.ui.view">
+        <field name="name">mtdn.asset.equipment.type.search</field>
+        <field name="model">mtdn.asset.equipment.type</field>
+        <field name="arch" type="xml">
+            <search string="Tìm loại thiết bị">
+                <field name="name"/>
+                <field name="code"/>
+                <filter name="filter_active" string="Đang hoạt động" domain="[('active','=',True)]"/>
+            </search>
+        </field>
+    </record>
+</odoo>

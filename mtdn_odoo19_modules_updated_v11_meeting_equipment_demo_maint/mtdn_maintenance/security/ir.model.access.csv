@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_mtdn_maintenance_category_user,mtdn.maintenance.category,model_mtdn_maintenance_category,base.group_user,1,1,1,1
+access_mtdn_maintenance_team_user,mtdn.maintenance.team,model_mtdn_maintenance_team,base.group_user,1,1,1,1
+access_mtdn_maintenance_request_user,mtdn.maintenance.request,model_mtdn_maintenance_request,base.group_user,1,1,1,1

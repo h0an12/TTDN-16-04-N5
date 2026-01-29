@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo noupdate="1">
+    <!-- Sample Bookings (loaded only when demo data is enabled) -->
+    <record id="mtdn_booking_01" model="mtdn.meeting.booking">
+        <field name="name">Họp kế hoạch tuần</field>
+        <field name="room_id" ref="mtdn_room_01"/>
+        <field name="start_datetime">2026-01-14 09:00:00</field>
+        <field name="end_datetime">2026-01-14 10:00:00</field>
+        <field name="host_id" ref="mtdn_hr.mtdn_employee_hr_mgr"/>
+        <field name="participant_ids" eval="[(6, 0, [ref('mtdn_hr.mtdn_employee_hr_01'), ref('mtdn_hr.mtdn_employee_hr_02')])]"/>
+        <field name="state">confirmed</field>
+    </record>
+
+    <record id="mtdn_booking_02" model="mtdn.meeting.booking">
+        <field name="name">Review dự án</field>
+        <field name="room_id" ref="mtdn_room_02"/>
+        <field name="start_datetime">2026-01-14 10:30:00</field>
+        <field name="end_datetime">2026-01-14 11:30:00</field>
+        <field name="host_id" ref="mtdn_hr.mtdn_employee_it_mgr"/>
+        <field name="participant_ids" eval="[(6, 0, [ref('mtdn_hr.mtdn_employee_it_01'), ref('mtdn_hr.mtdn_employee_it_02')])]"/>
+        <field name="state">draft</field>
+    </record>
+</odoo>

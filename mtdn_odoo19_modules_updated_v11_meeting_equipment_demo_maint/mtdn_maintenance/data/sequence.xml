@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="seq_mtdn_maintenance_request" model="ir.sequence">
+        <field name="name">Maintenance Request</field>
+        <field name="code">mtdn.maintenance.request</field>
+        <field name="prefix">MR/</field>
+        <field name="padding">5</field>
+        <field name="company_id" eval="False"/>
+    </record>
+</odoo>

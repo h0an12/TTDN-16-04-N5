@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Seed rooms so users always have data (even when demo data is disabled). -->
+    <record id="mtdn_room_01" model="mtdn.meeting.room">
+        <field name="code">ROOM_01</field>
+        <field name="name">Phòng Họp 01</field>
+        <field name="location">Tầng 1 - Khu A</field>
+        <field name="capacity">4</field>
+        <field name="state">available</field>
+        <field name="equipment_ids" eval="[(6, 0, [ref('mtdn_asset.asset_eq_tv_02'), ref('mtdn_asset.asset_eq_speaker_02')])]"/>
+    </record>
+    <record id="mtdn_room_02" model="mtdn.meeting.room">
+        <field name="code">ROOM_02</field>
+        <field name="name">Phòng Họp 02</field>
+        <field name="location">Tầng 1 - Khu B</field>
+        <field name="capacity">6</field>
+        <field name="state">available</field>
+        <field name="equipment_ids" eval="[(6, 0, [ref('mtdn_asset.asset_eq_tv_03'), ref('mtdn_asset.asset_eq_speaker_03')])]"/>
+    </record>
+    <record id="mtdn_room_03" model="mtdn.meeting.room">
+        <field name="code">ROOM_03</field>
+        <field name="name">Phòng Họp 03</field>
+        <field name="location">Tầng 1 - Khu C</field>
+        <field name="capacity">8</field>
+        <field name="state">available</field>
+        <field name="equipment_ids" eval="[(6, 0, [ref('mtdn_asset.asset_eq_projector_01'), ref('mtdn_asset.asset_eq_speaker_01')])]"/>
+    </record>
+    <record id="mtdn_room_04" model="mtdn.meeting.room">
+        <field name="code">ROOM_04</field>
+        <field name="name">Phòng Họp 04</field>
+        <field name="location">Tầng 2 - Khu A</field>
+        <field name="capacity">10</field>
+        <field name="state">available</field>
+        <field name="equipment_ids" eval="[(6, 0, [ref('mtdn_asset.asset_eq_projector_02'), ref('mtdn_asset.asset_eq_speaker_02')])]"/>
+    </record>
+    <record id="mtdn_room_05" model="mtdn.meeting.room">
+        <field name="code">ROOM_05</field>
+        <field name="name">Phòng Họp 05</field>
+        <field name="location">Tầng 2 - Khu B</field>
+        <field name="capacity">12</field>
+        <field name="state">available</field>
+        <field name="equipment_ids" eval="[(6, 0, [ref('mtdn_asset.asset_eq_projector_03'), ref('mtdn_asset.asset_eq_speaker_03')])]"/>
+    </record>
+    <record id="mtdn_room_06" model="mtdn.meeting.room">
+        <field name="code">ROOM_06</field>
+        <field name="name">Phòng Họp 06</field>
+        <field name="location">Tầng 2 - Khu C</field>
+        <field name="capacity">14</field>
+        <field name="state">available</field>
+        <field name="equipment_ids" eval="[(6, 0, [ref('mtdn_asset.asset_eq_projector_01'), ref('mtdn_asset.asset_eq_mic_01'), ref('mtdn_asset.asset_eq_speaker_01')])]"/>
+    </record>
+    <record id="mtdn_room_07" model="mtdn.meeting.room">
+        <field name="code">ROOM_07</field>
+        <field name="name">Phòng Họp 07</field>
+        <field name="location">Tầng 3 - Khu A</field>
+        <field name="capacity">16</field>
+        <field name="state">available</field>
+        <field name="equipment_ids" eval="[(6, 0, [ref('mtdn_asset.asset_eq_projector_02'), ref('mtdn_asset.asset_eq_mic_02'), ref('mtdn_asset.asset_eq_speaker_02')])]"/>
+    </record>
+    <record id="mtdn_room_08" model="mtdn.meeting.room">
+        <field name="code">ROOM_08</field>
+        <field name="name">Phòng Họp 08</field>
+        <field name="location">Tầng 3 - Khu B</field>
+        <field name="capacity">18</field>
+        <field name="state">available</field>
+        <field name="equipment_ids" eval="[(6, 0, [ref('mtdn_asset.asset_eq_projector_03'), ref('mtdn_asset.asset_eq_mic_01'), ref('mtdn_asset.asset_eq_speaker_03')])]"/>
+    </record>
+    <record id="mtdn_room_09" model="mtdn.meeting.room">
+        <field name="code">ROOM_09</field>
+        <field name="name">Phòng Họp 09</field>
+        <field name="location">Tầng 3 - Khu C</field>
+        <field name="capacity">20</field>
+        <field name="state">available</field>
+        <field name="equipment_ids" eval="[(6, 0, [ref('mtdn_asset.asset_eq_projector_01'), ref('mtdn_asset.asset_eq_tv_01'), ref('mtdn_asset.asset_eq_mic_02'), ref('mtdn_asset.asset_eq_speaker_01'), ref('mtdn_asset.asset_eq_camera_02')])]"/>
+    </record>
+    <record id="mtdn_room_10" model="mtdn.meeting.room">
+        <field name="code">ROOM_10</field>
+        <field name="name">Phòng Họp 10</field>
+        <field name="location">Tầng 4 - Khu A</field>
+        <field name="capacity">6</field>
+        <field name="state">available</field>
+        <field name="equipment_ids" eval="[(6, 0, [ref('mtdn_asset.asset_eq_tv_02'), ref('mtdn_asset.asset_eq_speaker_02')])]"/>
+    </record>
+    <record id="mtdn_room_11" model="mtdn.meeting.room">
+        <field name="code">ROOM_11</field>
+        <field name="name">Phòng Họp 11</field>
+        <field name="location">Tầng 4 - Khu B</field>
+        <field name="capacity">8</field>
+        <field name="state">available</field>
+        <field name="equipment_ids" eval="[(6, 0, [ref('mtdn_asset.asset_eq_projector_03'), ref('mtdn_asset.asset_eq_speaker_03')])]"/>
+    </record>
+    <record id="mtdn_room_12" model="mtdn.meeting.room">
+        <field name="code">ROOM_12</field>
+        <field name="name">Phòng Họp 12</field>
+        <field name="location">Tầng 4 - Khu C</field>
+        <field name="capacity">10</field>
+        <field name="state">available</field>
+        <field name="equipment_ids" eval="[(6, 0, [ref('mtdn_asset.asset_eq_projector_01'), ref('mtdn_asset.asset_eq_speaker_01')])]"/>
+    </record>
+    <record id="mtdn_room_13" model="mtdn.meeting.room">
+        <field name="code">ROOM_13</field>
+        <field name="name">Phòng Họp 13</field>
+        <field name="location">Tầng 5 - Khu A</field>
+        <field name="capacity">12</field>
+        <field name="state">available</field>
+        <field name="equipment_ids" eval="[(6, 0, [ref('mtdn_asset.asset_eq_projector_02'), ref('mtdn_asset.asset_eq_speaker_02')])]"/>
+    </record>
+    <record id="mtdn_room_14" model="mtdn.meeting.room">
+        <field name="code">ROOM_14</field>
+        <field name="name">Phòng Họp 14</field>
+        <field name="location">Tầng 5 - Khu B</field>
+        <field name="capacity">14</field>
+        <field name="state">available</field>
+        <field name="equipment_ids" eval="[(6, 0, [ref('mtdn_asset.asset_eq_projector_03'), ref('mtdn_asset.asset_eq_mic_01'), ref('mtdn_asset.asset_eq_speaker_03')])]"/>
+    </record>
+    <record id="mtdn_room_15" model="mtdn.meeting.room">
+        <field name="code">ROOM_15</field>
+        <field name="name">Phòng Họp 15</field>
+        <field name="location">Tầng 5 - Khu C</field>
+        <field name="capacity">16</field>
+        <field name="state">available</field>
+        <field name="equipment_ids" eval="[(6, 0, [ref('mtdn_asset.asset_eq_projector_01'), ref('mtdn_asset.asset_eq_mic_02'), ref('mtdn_asset.asset_eq_speaker_01')])]"/>
+    </record>
+    <record id="mtdn_room_16" model="mtdn.meeting.room">
+        <field name="code">ROOM_16</field>
+        <field name="name">Phòng Họp 16</field>
+        <field name="location">Tầng 6 - Khu A</field>
+        <field name="capacity">18</field>
+        <field name="state">available</field>
+        <field name="equipment_ids" eval="[(6, 0, [ref('mtdn_asset.asset_eq_projector_02'), ref('mtdn_asset.asset_eq_mic_01'), ref('mtdn_asset.asset_eq_speaker_02')])]"/>
+    </record>
+    <record id="mtdn_room_17" model="mtdn.meeting.room">
+        <field name="code">ROOM_17</field>
+        <field name="name">Phòng Họp 17</field>
+        <field name="location">Tầng 6 - Khu B</field>
+        <field name="capacity">20</field>
+        <field name="state">available</field>
+        <field name="equipment_ids" eval="[(6, 0, [ref('mtdn_asset.asset_eq_projector_03'), ref('mtdn_asset.asset_eq_tv_03'), ref('mtdn_asset.asset_eq_mic_02'), ref('mtdn_asset.asset_eq_speaker_03'), ref('mtdn_asset.asset_eq_camera_02')])]"/>
+    </record>
+    <record id="mtdn_room_18" model="mtdn.meeting.room">
+        <field name="code">ROOM_18</field>
+        <field name="name">Phòng Họp 18</field>
+        <field name="location">Tầng 6 - Khu C</field>
+        <field name="capacity">22</field>
+        <field name="state">available</field>
+        <field name="equipment_ids" eval="[(6, 0, [ref('mtdn_asset.asset_eq_projector_01'), ref('mtdn_asset.asset_eq_tv_01'), ref('mtdn_asset.asset_eq_mic_01'), ref('mtdn_asset.asset_eq_speaker_01'), ref('mtdn_asset.asset_eq_camera_01')])]"/>
+    </record>
+    <record id="mtdn_room_19" model="mtdn.meeting.room">
+        <field name="code">ROOM_19</field>
+        <field name="name">Phòng Họp 19</field>
+        <field name="location">Tầng 7 - Khu A</field>
+        <field name="capacity">10</field>
+        <field name="state">available</field>
+        <field name="equipment_ids" eval="[(6, 0, [ref('mtdn_asset.asset_eq_projector_02'), ref('mtdn_asset.asset_eq_speaker_02')])]"/>
+    </record>
+    <record id="mtdn_room_20" model="mtdn.meeting.room">
+        <field name="code">ROOM_20</field>
+        <field name="name">Phòng Họp 20</field>
+        <field name="location">Tầng 7 - Khu B</field>
+        <field name="capacity">12</field>
+        <field name="state">available</field>
+        <field name="equipment_ids" eval="[(6, 0, [ref('mtdn_asset.asset_eq_projector_03'), ref('mtdn_asset.asset_eq_speaker_03')])]"/>
+    </record>
+    <record id="mtdn_room_21" model="mtdn.meeting.room">
+        <field name="code">ROOM_21</field>
+        <field name="name">Phòng Họp 21</field>
+        <field name="location">Tầng 7 - Khu C</field>
+        <field name="capacity">14</field>
+        <field name="state">available</field>
+        <field name="equipment_ids" eval="[(6, 0, [ref('mtdn_asset.asset_eq_projector_01'), ref('mtdn_asset.asset_eq_mic_02'), ref('mtdn_asset.asset_eq_speaker_01')])]"/>
+    </record>
+    <record id="mtdn_room_22" model="mtdn.meeting.room">
+        <field name="code">ROOM_22</field>
+        <field name="name">Phòng Họp 22</field>
+        <field name="location">Tầng 8 - Khu A</field>
+        <field name="capacity">16</field>
+        <field name="state">available</field>
+        <field name="equipment_ids" eval="[(6, 0, [ref('mtdn_asset.asset_eq_projector_02'), ref('mtdn_asset.asset_eq_mic_01'), ref('mtdn_asset.asset_eq_speaker_02')])]"/>
+    </record>
+    <record id="mtdn_room_23" model="mtdn.meeting.room">
+        <field name="code">ROOM_23</field>
+        <field name="name">Phòng Họp 23</field>
+        <field name="location">Tầng 8 - Khu B</field>
+        <field name="capacity">18</field>
+        <field name="state">available</field>
+        <field name="equipment_ids" eval="[(6, 0, [ref('mtdn_asset.asset_eq_projector_03'), ref('mtdn_asset.asset_eq_mic_02'), ref('mtdn_asset.asset_eq_speaker_03')])]"/>
+    </record>
+    <record id="mtdn_room_24" model="mtdn.meeting.room">
+        <field name="code">ROOM_24</field>
+        <field name="name">Phòng Họp 24</field>
+        <field name="location">Tầng 8 - Khu C</field>
+        <field name="capacity">20</field>
+        <field name="state">available</field>
+        <field name="equipment_ids" eval="[(6, 0, [ref('mtdn_asset.asset_eq_projector_01'), ref('mtdn_asset.asset_eq_tv_01'), ref('mtdn_asset.asset_eq_mic_01'), ref('mtdn_asset.asset_eq_speaker_01'), ref('mtdn_asset.asset_eq_camera_01')])]"/>
+    </record>
+    <record id="mtdn_room_25" model="mtdn.meeting.room">
+        <field name="code">ROOM_25</field>
+        <field name="name">Phòng Họp 25</field>
+        <field name="location">Tầng 9 - Khu A</field>
+        <field name="capacity">24</field>
+        <field name="state">available</field>
+        <field name="equipment_ids" eval="[(6, 0, [ref('mtdn_asset.asset_eq_projector_02'), ref('mtdn_asset.asset_eq_tv_02'), ref('mtdn_asset.asset_eq_mic_02'), ref('mtdn_asset.asset_eq_speaker_02'), ref('mtdn_asset.asset_eq_camera_02')])]"/>
+    </record>
+</odoo>

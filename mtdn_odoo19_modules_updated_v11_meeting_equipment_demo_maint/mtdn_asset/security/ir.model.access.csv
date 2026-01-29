@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_mtdn_asset_user,access.mtdn.asset.user,model_mtdn_asset,base.group_user,1,1,1,1
+access_mtdn_asset_category_user,access.mtdn.asset.category.user,model_mtdn_asset_category,base.group_user,1,1,1,1
+access_mtdn_asset_equipment_type_user,access.mtdn.asset.equipment.type.user,model_mtdn_asset_equipment_type,base.group_user,1,1,1,1
+access_mtdn_branch_user,access.mtdn.branch.user,model_mtdn_branch,base.group_user,1,1,1,1

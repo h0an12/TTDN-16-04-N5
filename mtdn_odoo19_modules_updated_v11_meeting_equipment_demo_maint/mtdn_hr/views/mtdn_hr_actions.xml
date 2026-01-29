@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Window Actions -->
+    <record id="action_mtdn_employee" model="ir.actions.act_window">
+        <field name="name">Nhân viên</field>
+        <field name="res_model">mtdn.employee</field>
+        <field name="view_mode">kanban,list,form</field>
+        <field name="search_view_id" ref="view_mtdn_employee_search"/>
+        <field name="context">{'active_test': False}</field>
+    </record>
+
+    <record id="action_mtdn_department" model="ir.actions.act_window">
+        <field name="name">Phòng ban</field>
+        <field name="res_model">mtdn.department</field>
+        <field name="view_mode">kanban,list,form</field>
+        <field name="search_view_id" ref="view_mtdn_department_search"/>
+    </record>
+
+    <record id="action_mtdn_job" model="ir.actions.act_window">
+        <field name="name">Chức danh</field>
+        <field name="res_model">mtdn.job</field>
+        <field name="view_mode">kanban,list,form</field>
+        <field name="search_view_id" ref="view_mtdn_job_search"/>
+    </record>
+
+    <!-- Client Action: HR Dashboard -->
+    <record id="action_mtdn_hr_dashboard" model="ir.actions.client">
+        <field name="name">Dashboard Nhân sự</field>
+        <field name="tag">mtdn_hr.dashboard</field>
+    </record>
+</odoo>

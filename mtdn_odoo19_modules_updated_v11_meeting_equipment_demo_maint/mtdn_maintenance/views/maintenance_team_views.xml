@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_mtdn_maintenance_team_kanban" model="ir.ui.view">
+        <field name="name">mtdn.maintenance.team.kanban</field>
+        <field name="model">mtdn.maintenance.team</field>
+        <field name="arch" type="xml">
+            <kanban class="o_kanban_small_column">
+                <field name="name"/>
+                <field name="leader_id"/>
+                <field name="member_ids"/>
+                <field name="active"/>
+                <templates>
+                    <t t-name="card">
+                        <div class="o_kanban_record mtdn_kanban_card mtdn_accent_blue">
+                            <div class="mtdn_kanban_title">
+                                <div class="fw-bold"><field name="name"/></div>
+                                <div>
+                                    <t t-if="record.active.raw_value"><span class="badge text-bg-success">Hoạt động</span></t>
+                                    <t t-else=""><span class="badge text-bg-secondary">Tạm ẩn</span></t>
+                                </div>
+                            </div>
+                            <div class="mt8"><span class="mtdn_kanban_label">Trưởng nhóm:</span> <field name="leader_id"/></div>
+                            <div class="mt4"><span class="mtdn_kanban_label">Thành viên:</span> <field name="member_ids" widget="many2many_tags"/></div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+    <record id="view_mtdn_maintenance_team_list" model="ir.ui.view">
+        <field name="name">mtdn.maintenance.team.list</field>
+        <field name="model">mtdn.maintenance.team</field>
+        <field name="arch" type="xml">
+            <list string="Đội xử lý">
+                <field name="name"/>
+                <field name="leader_id"/>
+                <field name="active"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_mtdn_maintenance_team_form" model="ir.ui.view">
+        <field name="name">mtdn.maintenance.team.form</field>
+        <field name="model">mtdn.maintenance.team</field>
+        <field name="arch" type="xml">
+            <form string="Đội xử lý">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="active"/>
+                    </group>
+                    <group>
+                        <field name="leader_id"/>
+                        <field name="member_ids" widget="many2many_tags"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_mtdn_maintenance_team" model="ir.actions.act_window">
+        <field name="name">Đội xử lý</field>
+        <field name="res_model">mtdn.maintenance.team</field>
+        <field name="view_mode">kanban,list,form</field>
+    </record>
+</odoo>

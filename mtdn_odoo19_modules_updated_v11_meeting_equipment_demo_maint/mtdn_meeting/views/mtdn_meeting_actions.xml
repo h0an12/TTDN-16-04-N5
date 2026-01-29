@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="action_mtdn_meeting_booking" model="ir.actions.act_window">
+        <field name="name">Lịch đặt phòng</field>
+        <field name="res_model">mtdn.meeting.booking</field>
+        <field name="view_mode">calendar,graph,pivot,list,form</field>
+        <field name="search_view_id" ref="view_mtdn_meeting_booking_search"/>
+    </record>
+
+    <!-- Dashboard: open analytics first (graph/pivot), then calendar -->
+    <record id="action_mtdn_meeting_dashboard" model="ir.actions.act_window">
+        <field name="name">Dashboard</field>
+        <field name="res_model">mtdn.meeting.booking</field>
+        <field name="view_mode">graph,pivot,calendar</field>
+        <field name="search_view_id" ref="view_mtdn_meeting_booking_search"/>
+        <field name="context">{'search_default_filter_confirmed': 1}</field>
+    </record>
+
+    <record id="action_mtdn_meeting_room" model="ir.actions.act_window">
+        <field name="name">Phòng họp</field>
+        <field name="res_model">mtdn.meeting.room</field>
+        <field name="view_mode">kanban,list,form</field>
+        <field name="search_view_id" ref="view_mtdn_meeting_room_search"/>
+        <field name="context">{'active_test': False}</field>
+    </record>
+</odoo>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Categories -->
+    <record id="mtdn_maint_cat_electrical" model="mtdn.maintenance.category">
+        <field name="name">Điện</field>
+        <field name="description">Sự cố điện, ổ cắm, đèn, UPS...</field>
+    </record>
+    <record id="mtdn_maint_cat_network" model="mtdn.maintenance.category">
+        <field name="name">Mạng / WiFi</field>
+        <field name="description">Sự cố mạng, wifi, switch, router...</field>
+    </record>
+    <record id="mtdn_maint_cat_av" model="mtdn.maintenance.category">
+        <field name="name">Âm thanh</field>
+        <field name="description">Loa, micro, mixer...</field>
+    </record>
+    <record id="mtdn_maint_cat_display" model="mtdn.maintenance.category">
+        <field name="name">Trình chiếu</field>
+        <field name="description">TV, máy chiếu, HDMI, adapter...</field>
+    </record>
+
+    <!-- Team -->
+    <record id="mtdn_maint_team_it" model="mtdn.maintenance.team">
+        <field name="name">Đội kỹ thuật</field>
+        <field name="leader_id" ref="base.user_admin"/>
+        <field name="member_ids" eval="[(4, ref('base.user_admin'))]"/>
+    </record>
+
+    <record id="mtdn_maint_team_facility" model="mtdn.maintenance.team">
+        <field name="name">Đội cơ sở vật chất</field>
+        <field name="leader_id" ref="base.user_admin"/>
+        <field name="member_ids" eval="[(4, ref('base.user_admin'))]"/>
+    </record>
+    <record id="mtdn_maint_team_electrical" model="mtdn.maintenance.team">
+        <field name="name">Đội điện</field>
+        <field name="leader_id" ref="base.user_admin"/>
+        <field name="member_ids" eval="[(4, ref('base.user_admin'))]"/>
+    </record>
+    <record id="mtdn_maint_team_av" model="mtdn.maintenance.team">
+        <field name="name">Đội âm thanh &amp; trình chiếu</field>
+        <field name="leader_id" ref="base.user_admin"/>
+        <field name="member_ids" eval="[(4, ref('base.user_admin'))]"/>
+    </record>
+
+</odoo>

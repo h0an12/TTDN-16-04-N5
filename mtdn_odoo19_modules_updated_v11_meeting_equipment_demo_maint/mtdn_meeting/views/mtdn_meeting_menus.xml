@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <menuitem id="menu_mtdn_meeting_root" name="Phòng họp" parent="mtdn_hr.menu_mtdn_root" sequence="30"/>
+<menuitem
+        id="menu_mtdn_meeting_ai_assistant"
+        name="Trợ lý AI (Gemini)"
+        parent="menu_mtdn_meeting_root"
+        action="action_mtdn_meeting_ai_assistant"
+        sequence="4"
+    />
+
+    <menuitem
+        id="menu_mtdn_meeting_request"
+        name="Đặt phòng theo yêu cầu"
+        parent="menu_mtdn_meeting_root"
+        action="action_mtdn_meeting_room_request"
+        sequence="5"
+    />
+
+    <menuitem
+        id="menu_mtdn_meeting_booking"
+        name="Đặt lịch"
+        parent="menu_mtdn_meeting_root"
+        action="action_mtdn_meeting_booking"
+        sequence="10"
+    />
+
+    <menuitem
+        id="menu_mtdn_meeting_room"
+        name="Phòng họp"
+        parent="menu_mtdn_meeting_root"
+        action="action_mtdn_meeting_room"
+        sequence="20"
+    />
+
+    <menuitem
+        id="menu_mtdn_meeting_ai_config"
+        name="Cấu hình AI (Gemini)"
+        parent="menu_mtdn_meeting_root"
+        action="action_mtdn_meeting_ai_config"
+        sequence="90"
+        groups="base.group_system"
+    />
+
+</odoo>

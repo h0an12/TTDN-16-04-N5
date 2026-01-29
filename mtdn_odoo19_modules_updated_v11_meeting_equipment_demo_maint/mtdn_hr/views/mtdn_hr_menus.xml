@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Root Menu for the whole MTDN suite -->
+    <menuitem id="menu_mtdn_root" name="MTDN" sequence="10"/>
+
+    <!-- HR Menus -->
+    <menuitem id="menu_mtdn_hr_root" name="Nhân sự" parent="menu_mtdn_root" sequence="10"/>
+
+    <menuitem
+        id="menu_mtdn_hr_dashboard"
+        name="Dashboard"
+        parent="menu_mtdn_hr_root"
+        action="action_mtdn_hr_dashboard"
+        sequence="1"
+    />
+
+    <menuitem
+        id="menu_mtdn_hr_employee"
+        name="Nhân viên"
+        parent="menu_mtdn_hr_root"
+        action="action_mtdn_employee"
+        sequence="10"
+    />
+
+    <menuitem id="menu_mtdn_hr_config" name="Danh mục" parent="menu_mtdn_hr_root" sequence="99"/>
+
+    <menuitem
+        id="menu_mtdn_hr_department"
+        name="Phòng ban"
+        parent="menu_mtdn_hr_config"
+        action="action_mtdn_department"
+        sequence="10"
+    />
+
+    <menuitem
+        id="menu_mtdn_hr_job"
+        name="Chức danh"
+        parent="menu_mtdn_hr_config"
+        action="action_mtdn_job"
+        sequence="20"
+    />
+</odoo>

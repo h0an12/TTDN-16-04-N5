@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_mtdn_meeting_booking_calendar" model="ir.ui.view">
+        <field name="name">mtdn.meeting.booking.calendar</field>
+        <field name="model">mtdn.meeting.booking</field>
+        <field name="arch" type="xml">
+            <!-- Odoo 17+ removed some legacy calendar attributes (e.g. quick_add).
+                 Keep the calendar definition minimal for Odoo 19 compatibility. -->
+            <!-- Keep it compact: show only title + room + host. -->
+            <!-- Use a computed integer color for vibrant and consistent calendar coloring -->
+            <calendar string="Lịch đặt phòng" date_start="start_datetime" date_stop="end_datetime" color="color">
+                <field name="name"/>
+                <field name="room_id"/>
+                <field name="host_id"/>
+                <field name="state"/>
+            </calendar>
+        </field>
+    </record>
+
+    <record id="view_mtdn_meeting_booking_list" model="ir.ui.view">
+        <field name="name">mtdn.meeting.booking.list</field>
+        <field name="model">mtdn.meeting.booking</field>
+        <field name="arch" type="xml">
+            <list string="Lịch đặt phòng">
+                <field name="name"/>
+                <field name="room_id"/>
+                <field name="start_datetime"/>
+                <field name="end_datetime"/>
+                <field name="host_id"/>
+                <field name="required_equipment_type_ids" widget="many2many_tags"/>
+                <field name="state" widget="badge"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_mtdn_meeting_booking_form" model="ir.ui.view">
+        <field name="name">mtdn.meeting.booking.form</field>
+        <field name="model">mtdn.meeting.booking</field>
+        <field name="arch" type="xml">
+            <form string="Lịch đặt phòng">
+                <header>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,confirmed,cancelled"/>
+                    <button name="action_set_draft" type="object" string="Nháp" class="btn-secondary" invisible="state == 'draft'"/>
+                    <button name="action_confirm" type="object" string="Xác nhận" class="btn-primary" invisible="state == 'confirmed'"/>
+                    <button name="action_cancel" type="object" string="Hủy" class="btn-danger" invisible="state == 'cancelled'"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1><field name="name" placeholder="VD: Họp kế hoạch tuần"/></h1>
+                    </div>
+
+                    <group>
+                        <group string="Thời gian &amp; Phòng">
+                            <field name="start_datetime"/>
+                            <field name="end_datetime"/>
+                            <field name="room_id"/>
+                        </group>
+                        <group string="Tổ chức">
+                            <field name="host_id"/>
+                            <field name="participant_ids" widget="many2many_tags"/>
+                        </group>
+                    </group>
+
+                    <notebook>
+                        <page string="Thiết bị">
+                            <group>
+                                <group string="Yêu cầu">
+                                    <field name="required_equipment_type_ids" widget="many2many_tags"/>
+                                </group>
+                                <group string="Thiết bị của phòng">
+                                    <field name="room_equipment_ids" widget="many2many_tags" readonly="1"/>
+                                </group>
+                            </group>
+                            <group string="Thiết bị bổ sung">
+                                <field name="equipment_ids" widget="many2many_tags"/>
+                            </group>
+                        </page>
+
+                        <page string="Ghi chú">
+                            <field name="note" nolabel="1" placeholder="Ghi chú thêm..."/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Dashboard-friendly views -->
+    <record id="view_mtdn_meeting_booking_graph" model="ir.ui.view">
+        <field name="name">mtdn.meeting.booking.graph</field>
+        <field name="model">mtdn.meeting.booking</field>
+        <field name="arch" type="xml">
+            <graph string="Thống kê lịch đặt phòng" type="bar">
+                <field name="room_id" type="row"/>
+                <field name="start_datetime" interval="day" type="col"/>
+                <field name="id" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
+    <record id="view_mtdn_meeting_booking_pivot" model="ir.ui.view">
+        <field name="name">mtdn.meeting.booking.pivot</field>
+        <field name="model">mtdn.meeting.booking</field>
+        <field name="arch" type="xml">
+            <pivot string="Báo cáo lịch đặt phòng">
+                <field name="room_id" type="row"/>
+                <field name="state" type="col"/>
+                <field name="start_datetime" interval="month" type="col"/>
+            </pivot>
+        </field>
+    </record>
+
+    <record id="view_mtdn_meeting_booking_search" model="ir.ui.view">
+        <field name="name">mtdn.meeting.booking.search</field>
+        <field name="model">mtdn.meeting.booking</field>
+        <field name="arch" type="xml">
+            <search string="Tìm lịch đặt phòng">
+                <field name="name"/>
+                <field name="room_id"/>
+                <field name="host_id"/>
+                <field name="participant_ids"/>
+
+                <filter name="filter_draft" string="Nháp" domain="[('state','=','draft')]"/>
+                <filter name="filter_confirmed" string="Xác nhận" domain="[('state','=','confirmed')]"/>
+                <filter name="filter_cancelled" string="Hủy" domain="[('state','=','cancelled')]"/>
+
+                <filter name="group_by_room" string="Nhóm theo phòng" context="{'group_by':'room_id'}"/>
+                <filter name="group_by_state" string="Nhóm theo trạng thái" context="{'group_by':'state'}"/>
+                <filter name="group_by_host" string="Nhóm theo host" context="{'group_by':'host_id'}"/>
+            </search>
+        </field>
+    </record>
+</odoo>

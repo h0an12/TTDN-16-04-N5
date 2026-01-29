@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_mtdn_employee_user,access.mtdn.employee.user,model_mtdn_employee,base.group_user,1,1,1,1
+access_mtdn_department_user,access.mtdn.department.user,model_mtdn_department,base.group_user,1,1,1,1
+access_mtdn_job_user,access.mtdn.job.user,model_mtdn_job,base.group_user,1,1,1,1

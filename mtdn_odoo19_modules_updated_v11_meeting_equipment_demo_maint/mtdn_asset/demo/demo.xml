@@ -1,0 +1,433 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo noupdate="1">
+    <!-- ======================================================
+         Demo: Companies / Partners / Branches
+         ====================================================== -->
+
+    <!-- Partners (suppliers / addresses) -->
+    <record id="mtdn_partner_supplier_abc" model="res.partner">
+        <field name="name">Công ty ABC - Nhà cung cấp</field>
+        <field name="is_company">1</field>
+        <field name="email">sales@abc.example.com</field>
+    </record>
+
+    <record id="mtdn_partner_supplier_xyz" model="res.partner">
+        <field name="name">Công ty XYZ - Nhà cung cấp</field>
+        <field name="is_company">1</field>
+        <field name="email">contact@xyz.example.com</field>
+    </record>
+
+    <record id="mtdn_partner_company_01" model="res.partner">
+        <field name="name">MTDN Group</field>
+        <field name="is_company">1</field>
+        <field name="email">info@mtdn.example.com</field>
+    </record>
+
+    <record id="mtdn_partner_company_02" model="res.partner">
+        <field name="name">MTDN Services</field>
+        <field name="is_company">1</field>
+        <field name="email">services@mtdn.example.com</field>
+    </record>
+
+    <!-- Companies -->
+    <record id="mtdn_company_01" model="res.company">
+        <field name="name">MTDN Group</field>
+        <field name="partner_id" ref="mtdn_partner_company_01"/>
+    </record>
+
+    <record id="mtdn_company_02" model="res.company">
+        <field name="name">MTDN Services</field>
+        <field name="partner_id" ref="mtdn_partner_company_02"/>
+    </record>
+
+    <!-- Branch addresses (as partners) -->
+    <record id="mtdn_partner_branch_hn" model="res.partner">
+        <field name="name">MTDN - Chi nhánh Hà Nội</field>
+        <field name="is_company">1</field>
+        <field name="city">Hà Nội</field>
+    </record>
+    <record id="mtdn_partner_branch_hcm" model="res.partner">
+        <field name="name">MTDN - Chi nhánh TP.HCM</field>
+        <field name="is_company">1</field>
+        <field name="city">TP.HCM</field>
+    </record>
+    <record id="mtdn_partner_branch_dn" model="res.partner">
+        <field name="name">MTDN - Chi nhánh Đà Nẵng</field>
+        <field name="is_company">1</field>
+        <field name="city">Đà Nẵng</field>
+    </record>
+
+    <!-- Branches -->
+    <record id="mtdn_branch_hn" model="mtdn.branch">
+        <field name="code">HN</field>
+        <field name="name">Chi nhánh Hà Nội</field>
+        <field name="company_id" ref="mtdn_company_01"/>
+        <field name="partner_id" ref="mtdn_partner_branch_hn"/>
+    </record>
+    <record id="mtdn_branch_hcm" model="mtdn.branch">
+        <field name="code">HCM</field>
+        <field name="name">Chi nhánh TP.HCM</field>
+        <field name="company_id" ref="mtdn_company_01"/>
+        <field name="partner_id" ref="mtdn_partner_branch_hcm"/>
+    </record>
+    <record id="mtdn_branch_dn" model="mtdn.branch">
+        <field name="code">DN</field>
+        <field name="name">Chi nhánh Đà Nẵng</field>
+        <field name="company_id" ref="mtdn_company_02"/>
+        <field name="partner_id" ref="mtdn_partner_branch_dn"/>
+    </record>
+
+    <!-- ======================================================
+         Asset Categories (diverse depreciation methods/units)
+         ====================================================== -->
+    <record id="mtdn_asset_cat_it" model="mtdn.asset.category">
+        <field name="code">IT_EQUIP</field>
+        <field name="name">Thiết bị IT</field>
+        <field name="depreciation_method">linear</field>
+        <field name="depreciation_unit">year</field>
+        <field name="depreciation_years">3</field>
+    </record>
+
+    <record id="mtdn_asset_cat_network" model="mtdn.asset.category">
+        <field name="code">NETWORK</field>
+        <field name="name">Thiết bị mạng</field>
+        <field name="depreciation_method">declining</field>
+        <field name="depreciation_unit">year</field>
+        <field name="depreciation_years">4</field>
+        <field name="declining_factor">2.0</field>
+    </record>
+
+    <record id="mtdn_asset_cat_office" model="mtdn.asset.category">
+        <field name="code">OFFICE</field>
+        <field name="name">Văn phòng</field>
+        <field name="depreciation_method">syd</field>
+        <field name="depreciation_unit">year</field>
+        <field name="depreciation_years">5</field>
+    </record>
+
+    <record id="mtdn_asset_cat_meeting" model="mtdn.asset.category">
+        <field name="code">MEET_EQUIP</field>
+        <field name="name">Thiết bị phòng họp</field>
+        <field name="depreciation_method">linear</field>
+        <field name="depreciation_unit">month</field>
+        <field name="depreciation_years">60</field>
+    </record>
+
+    <record id="mtdn_asset_cat_printer" model="mtdn.asset.category">
+        <field name="code">PRINTER</field>
+        <field name="name">Máy in &amp; Scan</field>
+        <field name="depreciation_method">declining</field>
+        <field name="depreciation_unit">month</field>
+        <field name="depreciation_years">48</field>
+        <field name="declining_factor">1.5</field>
+    </record>
+
+
+    <!-- ======================================================
+         Assets (diverse depreciation per asset + quantities)
+         ====================================================== -->
+    <record id="mtdn_asset_01" model="mtdn.asset">
+        <field name="code">AST00001</field>
+        <field name="name">Laptop Dell Latitude (IT-01)</field>
+        <field name="category_id" ref="mtdn_asset_cat_it"/>
+        <field name="company_id" ref="mtdn_company_01"/>
+        <field name="branch_id" ref="mtdn_branch_hn"/>
+        <field name="partner_id" ref="mtdn_partner_supplier_abc"/>
+        <field name="quantity">1</field>
+        <field name="state">in_use</field>
+        <field name="employee_id" ref="mtdn_hr.mtdn_employee_it_01"/>
+        <field name="purchase_date">2025-06-10</field>
+        <field name="in_service_date">2025-06-15</field>
+        <field name="depreciation_start_date">2025-06-15</field>
+        <field name="value">1500</field>
+        <field name="next_maintenance_date">2026-02-10</field>
+    </record>
+
+    <record id="mtdn_asset_02" model="mtdn.asset">
+        <field name="code">AST00002</field>
+        <field name="name">PC Văn phòng (HR)</field>
+        <field name="category_id" ref="mtdn_asset_cat_it"/>
+        <field name="company_id" ref="mtdn_company_01"/>
+        <field name="branch_id" ref="mtdn_branch_hn"/>
+        <field name="partner_id" ref="mtdn_partner_supplier_xyz"/>
+        <field name="quantity">5</field>
+        <field name="state">in_use</field>
+        <field name="department_id" ref="mtdn_hr.mtdn_department_hr"/>
+        <field name="purchase_date">2024-02-01</field>
+        <field name="in_service_date">2024-02-10</field>
+        <field name="value">900</field>
+        <field name="next_maintenance_date">2026-12-01</field>
+    </record>
+
+    <record id="mtdn_asset_03" model="mtdn.asset">
+        <field name="code">AST00003</field>
+        <field name="name">Máy chiếu Epson</field>
+        <field name="category_id" ref="mtdn_asset_cat_meeting"/>
+        <field name="company_id" ref="mtdn_company_01"/>
+        <field name="branch_id" ref="mtdn_branch_hcm"/>
+        <field name="partner_id" ref="mtdn_partner_supplier_abc"/>
+        <field name="quantity">2</field>
+        <field name="state">available</field>
+        <field name="purchase_date">2023-08-15</field>
+        <field name="in_service_date">2023-08-20</field>
+        <field name="value">650</field>
+        <field name="next_maintenance_date">2026-01-10</field>
+        <!-- Override: declining per month for variety -->
+        <field name="depreciation_method">declining</field>
+        <field name="depreciation_unit">month</field>
+        <field name="depreciation_years">36</field>
+        <field name="declining_factor">2.0</field>
+    </record>
+
+    <record id="mtdn_asset_04" model="mtdn.asset">
+        <field name="code">AST00004</field>
+        <field name="name">TV Samsung 55 inch</field>
+        <field name="category_id" ref="mtdn_asset_cat_meeting"/>
+        <field name="company_id" ref="mtdn_company_01"/>
+        <field name="branch_id" ref="mtdn_branch_hcm"/>
+        <field name="partner_id" ref="mtdn_partner_supplier_xyz"/>
+        <field name="quantity">1</field>
+        <field name="state">available</field>
+        <field name="purchase_date">2023-09-10</field>
+        <field name="in_service_date">2023-09-15</field>
+        <field name="value">800</field>
+        <field name="next_maintenance_date">2026-03-01</field>
+    </record>
+
+    <record id="mtdn_asset_05" model="mtdn.asset">
+        <field name="code">AST00005</field>
+        <field name="name">Micro không dây</field>
+        <field name="category_id" ref="mtdn_asset_cat_meeting"/>
+        <field name="company_id" ref="mtdn_company_01"/>
+        <field name="branch_id" ref="mtdn_branch_dn"/>
+        <field name="partner_id" ref="mtdn_partner_supplier_abc"/>
+        <field name="quantity">4</field>
+        <field name="state">available</field>
+        <field name="purchase_date">2023-10-01</field>
+        <field name="in_service_date">2023-10-05</field>
+        <field name="value">120</field>
+        <field name="next_maintenance_date">2026-01-05</field>
+        <!-- Override: no depreciation -->
+        <field name="depreciation_method">none</field>
+    </record>
+
+    <record id="mtdn_asset_06" model="mtdn.asset">
+        <field name="code">AST00006</field>
+        <field name="name">Bảng trắng phòng họp</field>
+        <field name="category_id" ref="mtdn_asset_cat_office"/>
+        <field name="company_id" ref="mtdn_company_02"/>
+        <field name="branch_id" ref="mtdn_branch_dn"/>
+        <field name="partner_id" ref="mtdn_partner_supplier_xyz"/>
+        <field name="quantity">2</field>
+        <field name="state">available</field>
+        <field name="purchase_date">2022-03-01</field>
+        <field name="in_service_date">2022-03-02</field>
+        <field name="value">70</field>
+        <field name="next_maintenance_date">2026-04-01</field>
+    </record>
+
+    <record id="mtdn_asset_07" model="mtdn.asset">
+        <field name="code">AST00007</field>
+        <field name="name">Router WiFi (IT Core)</field>
+        <field name="category_id" ref="mtdn_asset_cat_network"/>
+        <field name="company_id" ref="mtdn_company_01"/>
+        <field name="branch_id" ref="mtdn_branch_hn"/>
+        <field name="partner_id" ref="mtdn_partner_supplier_abc"/>
+        <field name="quantity">3</field>
+        <field name="state">available</field>
+        <field name="department_id" ref="mtdn_hr.mtdn_department_it"/>
+        <field name="purchase_date">2021-12-12</field>
+        <field name="in_service_date">2021-12-20</field>
+        <field name="value">110</field>
+        <field name="next_maintenance_date">2026-07-01</field>
+    </record>
+
+    <record id="mtdn_asset_08" model="mtdn.asset">
+        <field name="code">AST00008</field>
+        <field name="name">Bộ ghế phòng họp</field>
+        <field name="category_id" ref="mtdn_asset_cat_office"/>
+        <field name="company_id" ref="mtdn_company_02"/>
+        <field name="branch_id" ref="mtdn_branch_dn"/>
+        <field name="partner_id" ref="mtdn_partner_supplier_xyz"/>
+        <field name="quantity">10</field>
+        <field name="state">available</field>
+        <field name="purchase_date">2024-05-05</field>
+        <field name="in_service_date">2024-05-10</field>
+        <field name="value">500</field>
+        <field name="next_maintenance_date">2026-01-25</field>
+    </record>
+
+    <record id="mtdn_asset_09" model="mtdn.asset">
+        <field name="code">AST00009</field>
+        <field name="name">Loa hội nghị</field>
+        <field name="category_id" ref="mtdn_asset_cat_meeting"/>
+        <field name="company_id" ref="mtdn_company_01"/>
+        <field name="branch_id" ref="mtdn_branch_hcm"/>
+        <field name="partner_id" ref="mtdn_partner_supplier_abc"/>
+        <field name="quantity">3</field>
+        <field name="state">available</field>
+        <field name="purchase_date">2024-06-01</field>
+        <field name="in_service_date">2024-06-03</field>
+        <field name="value">180</field>
+        <field name="next_maintenance_date">2026-02-15</field>
+    </record>
+
+    <record id="mtdn_asset_10" model="mtdn.asset">
+        <field name="code">AST00010</field>
+        <field name="name">Camera họp trực tuyến</field>
+        <field name="category_id" ref="mtdn_asset_cat_meeting"/>
+        <field name="company_id" ref="mtdn_company_01"/>
+        <field name="branch_id" ref="mtdn_branch_hcm"/>
+        <field name="partner_id" ref="mtdn_partner_supplier_xyz"/>
+        <field name="quantity">1</field>
+        <field name="state">broken</field>
+        <field name="purchase_date">2022-11-11</field>
+        <field name="in_service_date">2022-11-20</field>
+        <field name="value">220</field>
+        <field name="next_maintenance_date">2026-06-15</field>
+    </record>
+
+    <record id="mtdn_asset_11" model="mtdn.asset">
+        <field name="code">AST00011</field>
+        <field name="name">Máy in Canon MF (Kế toán)</field>
+        <field name="category_id" ref="mtdn_asset_cat_printer"/>
+        <field name="company_id" ref="mtdn_company_02"/>
+        <field name="branch_id" ref="mtdn_branch_dn"/>
+        <field name="partner_id" ref="mtdn_partner_supplier_xyz"/>
+        <field name="quantity">2</field>
+        <field name="state">in_use</field>
+        <field name="department_id" ref="mtdn_hr.mtdn_department_acc"/>
+        <field name="purchase_date">2024-01-12</field>
+        <field name="in_service_date">2024-01-15</field>
+        <field name="value">350</field>
+        <field name="next_maintenance_date">2026-01-01</field>
+    </record>
+
+    <record id="mtdn_asset_12" model="mtdn.asset">
+        <field name="code">AST00012</field>
+        <field name="name">Laptop Lenovo ThinkPad (Sales-01)</field>
+        <field name="category_id" ref="mtdn_asset_cat_it"/>
+        <field name="company_id" ref="mtdn_company_01"/>
+        <field name="branch_id" ref="mtdn_branch_hcm"/>
+        <field name="partner_id" ref="mtdn_partner_supplier_abc"/>
+        <field name="quantity">1</field>
+        <field name="state">in_use</field>
+        <field name="employee_id" ref="mtdn_hr.mtdn_employee_sale_01"/>
+        <field name="purchase_date">2025-03-02</field>
+        <field name="in_service_date">2025-03-05</field>
+        <field name="value">1300</field>
+        <field name="next_maintenance_date">2026-03-20</field>
+    </record>
+
+    <record id="mtdn_asset_13" model="mtdn.asset">
+        <field name="code">AST00013</field>
+        <field name="name">Switch 24 port (IT)</field>
+        <field name="category_id" ref="mtdn_asset_cat_network"/>
+        <field name="company_id" ref="mtdn_company_01"/>
+        <field name="branch_id" ref="mtdn_branch_hn"/>
+        <field name="partner_id" ref="mtdn_partner_supplier_xyz"/>
+        <field name="quantity">2</field>
+        <field name="state">in_use</field>
+        <field name="department_id" ref="mtdn_hr.mtdn_department_it"/>
+        <field name="purchase_date">2023-04-20</field>
+        <field name="in_service_date">2023-04-25</field>
+        <field name="value">260</field>
+        <field name="next_maintenance_date">2026-10-10</field>
+    </record>
+
+    <record id="mtdn_asset_14" model="mtdn.asset">
+        <field name="code">AST00014</field>
+        <field name="name">Bàn họp gỗ (Admin)</field>
+        <field name="category_id" ref="mtdn_asset_cat_office"/>
+        <field name="company_id" ref="mtdn_company_02"/>
+        <field name="branch_id" ref="mtdn_branch_dn"/>
+        <field name="partner_id" ref="mtdn_partner_supplier_abc"/>
+        <field name="quantity">1</field>
+        <field name="state">in_use</field>
+        <field name="department_id" ref="mtdn_hr.mtdn_department_admin"/>
+        <field name="purchase_date">2022-08-01</field>
+        <field name="in_service_date">2022-08-03</field>
+        <field name="value">420</field>
+        <field name="next_maintenance_date">2026-06-01</field>
+    </record>
+
+    <!-- ======================================================
+         Demo enrichment for Meeting Room Equipment
+         - Add Company / Branch / Next maintenance date
+         ====================================================== -->
+
+    <!-- Projectors -->
+    <record id="mtdn_asset.asset_eq_projector_01" model="mtdn.asset">
+        <field name="company_id" ref="mtdn_company_01"/>
+        <field name="branch_id" ref="mtdn_branch_hn"/>
+        <field name="next_maintenance_date">2026-03-01</field>
+    </record>
+    <record id="mtdn_asset.asset_eq_projector_02" model="mtdn.asset">
+        <field name="company_id" ref="mtdn_company_01"/>
+        <field name="branch_id" ref="mtdn_branch_hcm"/>
+        <field name="next_maintenance_date">2026-02-15</field>
+    </record>
+    <record id="mtdn_asset.asset_eq_projector_03" model="mtdn.asset">
+        <field name="company_id" ref="mtdn_company_02"/>
+        <field name="branch_id" ref="mtdn_branch_dn"/>
+        <field name="next_maintenance_date">2026-04-10</field>
+    </record>
+
+    <!-- TVs / Screens -->
+    <record id="mtdn_asset.asset_eq_tv_01" model="mtdn.asset">
+        <field name="company_id" ref="mtdn_company_01"/>
+        <field name="branch_id" ref="mtdn_branch_hn"/>
+        <field name="next_maintenance_date">2026-02-20</field>
+    </record>
+    <record id="mtdn_asset.asset_eq_tv_02" model="mtdn.asset">
+        <field name="company_id" ref="mtdn_company_01"/>
+        <field name="branch_id" ref="mtdn_branch_hcm"/>
+        <field name="next_maintenance_date">2026-05-05</field>
+    </record>
+    <record id="mtdn_asset.asset_eq_tv_03" model="mtdn.asset">
+        <field name="company_id" ref="mtdn_company_02"/>
+        <field name="branch_id" ref="mtdn_branch_dn"/>
+        <field name="next_maintenance_date">2026-03-25</field>
+    </record>
+
+    <!-- Microphones -->
+    <record id="mtdn_asset.asset_eq_mic_01" model="mtdn.asset">
+        <field name="company_id" ref="mtdn_company_01"/>
+        <field name="branch_id" ref="mtdn_branch_hn"/>
+        <field name="next_maintenance_date">2026-02-28</field>
+    </record>
+    <record id="mtdn_asset.asset_eq_mic_02" model="mtdn.asset">
+        <field name="company_id" ref="mtdn_company_01"/>
+        <field name="branch_id" ref="mtdn_branch_hcm"/>
+        <field name="next_maintenance_date">2026-04-15</field>
+    </record>
+
+    <!-- Speakers -->
+    <record id="mtdn_asset.asset_eq_speaker_01" model="mtdn.asset">
+        <field name="company_id" ref="mtdn_company_01"/>
+        <field name="branch_id" ref="mtdn_branch_hcm"/>
+        <field name="next_maintenance_date">2026-03-18</field>
+    </record>
+    <record id="mtdn_asset.asset_eq_speaker_02" model="mtdn.asset">
+        <field name="company_id" ref="mtdn_company_02"/>
+        <field name="branch_id" ref="mtdn_branch_dn"/>
+        <field name="next_maintenance_date">2026-06-12</field>
+    </record>
+    <record id="mtdn_asset.asset_eq_speaker_03" model="mtdn.asset">
+        <field name="company_id" ref="mtdn_company_01"/>
+        <field name="branch_id" ref="mtdn_branch_hn"/>
+        <field name="next_maintenance_date">2026-05-20</field>
+    </record>
+
+    <!-- Cameras -->
+    <record id="mtdn_asset.asset_eq_camera_01" model="mtdn.asset">
+        <field name="company_id" ref="mtdn_company_02"/>
+        <field name="branch_id" ref="mtdn_branch_dn"/>
+        <field name="next_maintenance_date">2026-03-08</field>
+    </record>
+    <record id="mtdn_asset.asset_eq_camera_02" model="mtdn.asset">
+        <field name="company_id" ref="mtdn_company_01"/>
+        <field name="branch_id" ref="mtdn_branch_hcm"/>
+        <field name="next_maintenance_date">2026-07-01</field>
+    </record>
+</odoo>

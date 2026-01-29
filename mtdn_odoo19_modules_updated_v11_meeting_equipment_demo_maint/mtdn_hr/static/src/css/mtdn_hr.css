@@ -1,0 +1,145 @@
+/* MTDN HR - small UI polish (Odoo 19 backend) */
+
+.mtdn_hr_dashboard {
+    padding: 16px 16px 24px 16px;
+}
+
+.mtdn_hr_dashboard_header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 8px 0 12px 0;
+    border-bottom: 1px solid var(--border-color, rgba(0,0,0,.08));
+}
+
+.mtdn_hr_dashboard_title {
+    margin: 0;
+    font-weight: 700;
+}
+
+.mtdn_hr_dashboard_loading {
+    padding: 24px 0;
+    display: flex;
+    align-items: center;
+    color: var(--text-muted, rgba(0,0,0,.6));
+}
+
+.mtdn_card {
+    border-radius: 14px;
+    border: 1px solid rgba(0,0,0,.08);
+    box-shadow: 0 6px 18px rgba(0,0,0,.06);
+    transition: transform .08s ease, box-shadow .08s ease;
+}
+
+.mtdn_card_clickable {
+    cursor: pointer;
+}
+
+.mtdn_card_clickable:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 26px rgba(0,0,0,.10);
+}
+
+.mtdn_card_label {
+    font-size: 13px;
+    letter-spacing: .2px;
+    color: rgba(0,0,0,.55);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+}
+
+.mtdn_card_value {
+    font-size: 34px;
+    font-weight: 800;
+    line-height: 1.1;
+}
+
+.mtdn_card_hint {
+    margin-top: 8px;
+    font-size: 13px;
+    color: rgba(0,0,0,.55);
+}
+
+/* ------------------------------------------------------------
+   MTDN Suite - colorful, professional UI accents (Odoo 19)
+------------------------------------------------------------ */
+
+.mtdn_kanban_card {
+    border-radius: 18px;
+    border: 1px solid rgba(0,0,0,.08);
+    box-shadow: 0 10px 30px rgba(0,0,0,.08);
+    overflow: hidden;
+    padding: 12px 12px 10px 12px;
+    transition: transform .08s ease, box-shadow .08s ease;
+}
+
+.mtdn_kanban_card:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 14px 36px rgba(0,0,0,.12);
+}
+
+.mtdn_kanban_header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.mtdn_kanban_title {
+    font-weight: 800;
+    line-height: 1.15;
+}
+
+.mtdn_kanban_subtitle {
+    color: rgba(0,0,0,.55);
+    font-size: 12px;
+}
+
+.mtdn_kanban_meta {
+    margin-top: 10px;
+    display: grid;
+    gap: 6px;
+}
+
+.mtdn_kanban_meta_line {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    font-size: 13px;
+}
+
+.mtdn_kanban_label {
+    color: rgba(0,0,0,.55);
+}
+
+/* Bright but professional “state” accents */
+.mtdn_state_available { border-left: 8px solid #22c55e; background: linear-gradient(135deg, rgba(34,197,94,.16), rgba(255,255,255,1)); }
+.mtdn_state_in_use { border-left: 8px solid #f59e0b; background: linear-gradient(135deg, rgba(245,158,11,.18), rgba(255,255,255,1)); }
+.mtdn_state_maintenance { border-left: 8px solid #ef4444; background: linear-gradient(135deg, rgba(239,68,68,.16), rgba(255,255,255,1)); }
+.mtdn_state_broken { border-left: 8px solid #991b1b; background: linear-gradient(135deg, rgba(153,27,27,.18), rgba(255,255,255,1)); }
+
+/* HR states */
+.mtdn_state_probation { border-left: 8px solid #06b6d4; background: linear-gradient(135deg, rgba(6,182,212,.16), rgba(255,255,255,1)); }
+.mtdn_state_working { border-left: 8px solid #22c55e; background: linear-gradient(135deg, rgba(34,197,94,.16), rgba(255,255,255,1)); }
+.mtdn_state_on_leave { border-left: 8px solid #f59e0b; background: linear-gradient(135deg, rgba(245,158,11,.18), rgba(255,255,255,1)); }
+.mtdn_state_resigned { border-left: 8px solid #6b7280; background: linear-gradient(135deg, rgba(107,114,128,.18), rgba(255,255,255,1)); }
+
+/* Maintenance states */
+.mtdn_state_draft { border-left: 8px solid #3b82f6; background: linear-gradient(135deg, rgba(59,130,246,.16), rgba(255,255,255,1)); }
+.mtdn_state_submitted { border-left: 8px solid #a855f7; background: linear-gradient(135deg, rgba(168,85,247,.16), rgba(255,255,255,1)); }
+.mtdn_state_in_progress { border-left: 8px solid #f59e0b; background: linear-gradient(135deg, rgba(245,158,11,.18), rgba(255,255,255,1)); }
+.mtdn_state_done { border-left: 8px solid #22c55e; background: linear-gradient(135deg, rgba(34,197,94,.16), rgba(255,255,255,1)); }
+.mtdn_state_cancelled { border-left: 8px solid #ef4444; background: linear-gradient(135deg, rgba(239,68,68,.16), rgba(255,255,255,1)); }
+
+/* Generic colorful accents (for categories/config screens) */
+.mtdn_accent_blue { border-left: 8px solid #3b82f6; background: linear-gradient(135deg, rgba(59,130,246,.16), rgba(255,255,255,1)); }
+.mtdn_accent_purple { border-left: 8px solid #a855f7; background: linear-gradient(135deg, rgba(168,85,247,.16), rgba(255,255,255,1)); }
+.mtdn_accent_teal { border-left: 8px solid #06b6d4; background: linear-gradient(135deg, rgba(6,182,212,.16), rgba(255,255,255,1)); }
+.mtdn_accent_rose { border-left: 8px solid #f43f5e; background: linear-gradient(135deg, rgba(244,63,94,.16), rgba(255,255,255,1)); }
+
+/* HR employee states */
+.mtdn_state_probation { border-left: 8px solid #f59e0b; background: linear-gradient(135deg, rgba(245,158,11,.18), rgba(255,255,255,1)); }
+.mtdn_state_working { border-left: 8px solid #22c55e; background: linear-gradient(135deg, rgba(34,197,94,.16), rgba(255,255,255,1)); }
+.mtdn_state_resigned { border-left: 8px solid #ef4444; background: linear-gradient(135deg, rgba(239,68,68,.16), rgba(255,255,255,1)); }

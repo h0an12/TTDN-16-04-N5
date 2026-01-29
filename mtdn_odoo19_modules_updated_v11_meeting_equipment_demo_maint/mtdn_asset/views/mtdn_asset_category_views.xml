@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Kanban -->
+    <record id="view_mtdn_asset_category_kanban" model="ir.ui.view">
+        <field name="name">mtdn.asset.category.kanban</field>
+        <field name="model">mtdn.asset.category</field>
+        <field name="arch" type="xml">
+            <kanban class="o_kanban_small_column">
+                <field name="code"/>
+                <field name="name"/>
+                <field name="depreciation_method"/>
+                <field name="depreciation_unit"/>
+                <field name="depreciation_years"/>
+                <field name="active"/>
+                <templates>
+                    <t t-name="card">
+                        <div class="o_kanban_record mtdn_kanban_card mtdn_accent_purple">
+                            <div class="mtdn_kanban_title">
+                                <div>
+                                    <span class="text-muted" t-esc="record.code.value"/>
+                                    <div class="fw-bold"><field name="name"/></div>
+                                </div>
+                                <div>
+                                    <t t-if="record.active.raw_value">
+                                        <span class="badge text-bg-success">Đang dùng</span>
+                                    </t>
+                                    <t t-else="">
+                                        <span class="badge text-bg-secondary">Tạm ẩn</span>
+                                    </t>
+                                </div>
+                            </div>
+                            <div class="mtdn_kanban_meta_line mt8">
+                                <span class="mtdn_kanban_label">Khấu hao:</span>
+                                <span class="fw-bold"><field name="depreciation_method"/></span>
+                            </div>
+                            <div class="mtdn_kanban_meta_line mt4">
+                                <span class="mtdn_kanban_label">Đơn vị:</span>
+                                <span><field name="depreciation_unit"/></span>
+                            </div>
+                            <div class="mtdn_kanban_meta_line mt4">
+                                <span class="mtdn_kanban_label">Số năm:</span>
+                                <span class="fw-bold"><field name="depreciation_years"/></span>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+    <record id="view_mtdn_asset_category_list" model="ir.ui.view">
+        <field name="name">mtdn.asset.category.list</field>
+        <field name="model">mtdn.asset.category</field>
+        <field name="arch" type="xml">
+            <list string="Loại tài sản">
+                <field name="code"/>
+                <field name="name"/>
+                <field name="depreciation_method"/>
+                <field name="depreciation_unit"/>
+                <field name="depreciation_years"/>
+                <field name="declining_factor"/>
+                <field name="quantity_total"/>
+                <field name="active"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_mtdn_asset_category_form" model="ir.ui.view">
+        <field name="name">mtdn.asset.category.form</field>
+        <field name="model">mtdn.asset.category</field>
+        <field name="arch" type="xml">
+            <form string="Loại tài sản">
+                <sheet>
+                    <div class="oe_title">
+                        <h1><field name="name" placeholder="VD: Thiết bị IT"/></h1>
+                        <div class="text-muted">
+                            <span>Mã: </span>
+                            <field name="code" placeholder="VD: IT_EQUIP" class="oe_inline"/>
+                        </div>
+                    </div>
+
+                    <group>
+                        <group string="Thiết lập">
+                            <field name="active"/>
+                            <field name="depreciation_method"/>
+                            <field name="depreciation_unit" invisible="depreciation_method == 'none'"/>
+                            <field name="depreciation_years" invisible="depreciation_method == 'none'"/>
+                            <field name="declining_factor" invisible="depreciation_method != 'declining'"/>
+                        </group>
+                        <group string="Mô tả">
+                            <field name="description" nolabel="1" placeholder="Mô tả ngắn..."/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_mtdn_asset_category_search" model="ir.ui.view">
+        <field name="name">mtdn.asset.category.search</field>
+        <field name="model">mtdn.asset.category</field>
+        <field name="arch" type="xml">
+            <search string="Tìm loại tài sản">
+                <field name="name"/>
+                <field name="code"/>
+                <filter name="filter_active" string="Đang hoạt động" domain="[('active','=',True)]"/>
+            </search>
+        </field>
+    </record>
+</odoo>

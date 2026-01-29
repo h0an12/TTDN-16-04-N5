@@ -1,0 +1,9 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_mtdn_meeting_room_user,access.mtdn.meeting.room.user,model_mtdn_meeting_room,base.group_user,1,1,1,1
+access_mtdn_meeting_booking_user,access.mtdn.meeting.booking.user,model_mtdn_meeting_booking,base.group_user,1,1,1,1
+access_mtdn_meeting_room_request_user,access.mtdn.meeting.room.request.user,model_mtdn_meeting_room_request,base.group_user,1,1,1,1
+access_mtdn_meeting_booking_time_wizard_user,access.mtdn.meeting.booking.time.wizard.user,model_mtdn_meeting_booking_time_wizard,base.group_user,1,1,1,1
+access_mtdn_meeting_room_request_line_user,access.mtdn.meeting.room.request.line.user,model_mtdn_meeting_room_request_line,base.group_user,1,1,1,1
+access_mtdn_meeting_room_request_alt_user,access.mtdn.meeting.room.request.alt.user,model_mtdn_meeting_room_request_alt,base.group_user,1,1,1,1
+access_mtdn_meeting_ai_config_system,access.mtdn.meeting.ai.config.system,model_mtdn_meeting_ai_config,base.group_system,1,1,1,1
+access_mtdn_meeting_ai_assistant_user,access.mtdn.meeting.ai.assistant.user,model_mtdn_meeting_ai_assistant,base.group_user,1,1,1,1

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_mtdn_meeting_ai_assistant_form" model="ir.ui.view">
+        <field name="name">mtdn.meeting.ai.assistant.form</field>
+        <field name="model">mtdn.meeting.ai.assistant</field>
+        <field name="arch" type="xml">
+            <form string="Trợ lý AI (Gemini)">
+                <sheet>
+                    <group>
+                        <field name="request_text" placeholder="VD: Mai 9h–10h họp 8 người, cần TV và zoom" nolabel="1"/>
+                        <div class="text-muted" style="margin-top:6px;">
+                            * AI sẽ phân tích yêu cầu và mở form <b>Đặt phòng theo yêu cầu</b> đã được điền sẵn.
+                        </div>
+                    </group>
+                </sheet>
+                <footer>
+                    <button name="action_parse_and_open_request" type="object" string="Phân tích bằng AI" class="btn-primary"/>
+                    <button string="Đóng" special="cancel" class="btn-secondary"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_mtdn_meeting_ai_assistant" model="ir.actions.act_window">
+        <field name="name">Trợ lý AI (Gemini)</field>
+        <field name="res_model">mtdn.meeting.ai.assistant</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>

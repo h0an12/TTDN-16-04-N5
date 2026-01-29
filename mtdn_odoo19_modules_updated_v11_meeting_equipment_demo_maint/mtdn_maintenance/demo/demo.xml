@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo noupdate="1">
+    <!-- Maintenance requests for rooms -->
+    <record id="mtdn_maint_req_room_today" model="mtdn.maintenance.request">
+        <field name="request_for">room</field>
+        <field name="room_id" ref="mtdn_meeting.mtdn_room_03"/>
+        <field name="category_id" ref="mtdn_maintenance.mtdn_maint_cat_network"/>
+        <field name="team_id" ref="mtdn_maintenance.mtdn_maint_team_it"/>
+        <field name="priority">2</field>
+        <field name="requested_by" ref="base.user_admin"/>
+        <field name="assigned_user_id" ref="base.user_admin"/>
+        <field name="start_datetime">2026-01-24 00:00:00</field>
+        <field name="end_datetime">2026-01-24 23:59:00</field>
+        <field name="description">WiFi phòng họp chập chờn, họp online bị rớt.</field>
+        <field name="state">in_progress</field>
+    </record>
+
+    <record id="mtdn_maint_req_room_future" model="mtdn.maintenance.request">
+        <field name="request_for">room</field>
+        <field name="room_id" ref="mtdn_meeting.mtdn_room_07"/>
+        <field name="category_id" ref="mtdn_maintenance.mtdn_maint_cat_display"/>
+        <field name="team_id" ref="mtdn_maintenance.mtdn_maint_team_it"/>
+        <field name="priority">1</field>
+        <field name="requested_by" ref="base.user_admin"/>
+        <field name="start_datetime">2026-01-25 09:00:00</field>
+        <field name="end_datetime">2026-01-25 12:00:00</field>
+        <field name="description">Kiểm tra máy chiếu định kỳ và thay cáp HDMI.</field>
+        <field name="state">submitted</field>
+    </record>
+
+    <!-- Maintenance requests for assets (requires demo assets enabled) -->
+    <record id="mtdn_maint_req_asset_today" model="mtdn.maintenance.request">
+        <field name="request_for">asset</field>
+        <field name="asset_id" ref="mtdn_asset.mtdn_asset_06"/>
+        <field name="category_id" ref="mtdn_maintenance.mtdn_maint_cat_av"/>
+        <field name="team_id" ref="mtdn_maintenance.mtdn_maint_team_it"/>
+        <field name="priority">3</field>
+        <field name="requested_by" ref="base.user_admin"/>
+        <field name="assigned_user_id" ref="base.user_admin"/>
+        <field name="start_datetime">2026-01-24 00:30:00</field>
+        <field name="end_datetime">2026-01-24 06:00:00</field>
+        <field name="description">Micro không thu âm ổn định, cần kiểm tra pin và receiver.</field>
+        <field name="state">in_progress</field>
+    </record>
+
+    <record id="mtdn_maint_req_asset_done" model="mtdn.maintenance.request">
+        <field name="request_for">asset</field>
+        <field name="asset_id" ref="mtdn_asset.mtdn_asset_02"/>
+        <field name="category_id" ref="mtdn_maintenance.mtdn_maint_cat_electrical"/>
+        <field name="team_id" ref="mtdn_maintenance.mtdn_maint_team_it"/>
+        <field name="priority">0</field>
+        <field name="requested_by" ref="base.user_admin"/>
+        <field name="start_datetime">2026-01-10 09:00:00</field>
+        <field name="end_datetime">2026-01-10 10:00:00</field>
+        <field name="description">Kiểm tra ổ cắm và dây nguồn.</field>
+        <field name="resolution">Đã thay dây nguồn và kiểm tra ổ cắm OK.</field>
+        <field name="cost">15.0</field>
+        <field name="state">done</field>
+    </record>
+</odoo>

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+    <t t-name="mtdn_hr.dashboard" owl="1">
+        <div class="mtdn_hr_dashboard o_action">
+            <div class="mtdn_hr_dashboard_header">
+                <div>
+                    <h2 class="mtdn_hr_dashboard_title">Dashboard Nhân sự</h2>
+                    <div class="text-muted">Tổng quan nhanh về dữ liệu nhân sự (module tự tạo).</div>
+                </div>
+                <button class="btn btn-secondary" t-on-click="loadData">
+                    Làm mới
+                </button>
+            </div>
+
+            <t t-if="state.loading">
+                <div class="mtdn_hr_dashboard_loading">
+                    <span class="o_spinner"/>
+                    <span class="ms-2">Đang tải dữ liệu...</span>
+                </div>
+            </t>
+
+            <t t-else="">
+                <div class="row g-3 mt-1">
+                    <div class="col-12 col-lg-4">
+                        <div class="card mtdn_card mtdn_card_clickable" t-on-click="openAllEmployees">
+                            <div class="card-body">
+                                <div class="mtdn_card_label">Tổng nhân viên</div>
+                                <div class="mtdn_card_value" t-esc="state.employee_total"/>
+                                <div class="mtdn_card_hint">Nhấn để mở danh sách</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-lg-8">
+                        <div class="row g-3">
+                            <div class="col-12 col-md-6 col-lg-3">
+                                <div class="card mtdn_card mtdn_card_clickable" t-on-click="openProbationEmployees">
+                                    <div class="card-body">
+                                        <div class="mtdn_card_label">Thử việc</div>
+                                        <div class="mtdn_card_value" t-esc="state.probation"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6 col-lg-3">
+                                <div class="card mtdn_card mtdn_card_clickable" t-on-click="openWorkingEmployees">
+                                    <div class="card-body">
+                                        <div class="mtdn_card_label">Đang làm</div>
+                                        <div class="mtdn_card_value" t-esc="state.working"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6 col-lg-3">
+                                <div class="card mtdn_card mtdn_card_clickable" t-on-click="openOnLeaveEmployees">
+                                    <div class="card-body">
+                                        <div class="mtdn_card_label">Tạm nghỉ</div>
+                                        <div class="mtdn_card_value" t-esc="state.on_leave"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6 col-lg-3">
+                                <div class="card mtdn_card mtdn_card_clickable" t-on-click="openResignedEmployees">
+                                    <div class="card-body">
+                                        <div class="mtdn_card_label">Nghỉ việc</div>
+                                        <div class="mtdn_card_value" t-esc="state.resigned"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-lg-6">
+                        <div class="card mtdn_card mtdn_card_clickable" t-on-click="openDepartments">
+                            <div class="card-body">
+                                <div class="mtdn_card_label">Phòng ban</div>
+                                <div class="mtdn_card_value" t-esc="state.department_total"/>
+                                <div class="mtdn_card_hint">Xem danh sách phòng ban</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-lg-6">
+                        <div class="card mtdn_card mtdn_card_clickable" t-on-click="openJobs">
+                            <div class="card-body">
+                                <div class="mtdn_card_label">Chức danh</div>
+                                <div class="mtdn_card_value" t-esc="state.job_total"/>
+                                <div class="mtdn_card_hint">Xem danh sách chức danh</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </div>
+    </t>
+</templates>
